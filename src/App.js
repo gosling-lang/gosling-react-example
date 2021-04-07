@@ -16,7 +16,7 @@ const goslingSpec = {
             "column": "position",
             "value": "peak",
             "categories": ["sample 1", "sample 2", "sample 3", "sample 4"],
-            "bin": 4
+            "binSize": 4
           },
           "x": {"field": "start", "type": "genomic"},
           "xe": {"field": "end", "type": "genomic"},
@@ -25,16 +25,17 @@ const goslingSpec = {
           "color": {"field": "sample", "type": "nominal"},
           "stroke": {"value": "black"},
           "strokeWidth": {"value": 0.3},
-          "overlay": [
+          "alignment": "overlay",
+          "tracks": [
             {"mark": "bar"},
             {
               "mark": "brush",
-              "x": {"linkingID": "detail-1"},
+              "x": {"linkingId": "detail-1"},
               "color": {"value": "blue"}
             },
             {
               "mark": "brush",
-              "x": {"linkingID": "detail-2"},
+              "x": {"linkingId": "detail-2"},
               "color": {"value": "red"}
             }
           ],
@@ -111,13 +112,13 @@ const goslingSpec = {
                 "column": "position",
                 "value": "peak",
                 "categories": ["sample 1", "sample 2", "sample 3", "sample 4"],
-                "bin": 4
+                "binSize": 4
               },
               "mark": "bar",
               "x": {
                 "field": "start",
                 "type": "genomic",
-                "linkingID": "detail-1",
+                "linkingId": "detail-1",
                 "domain": {"chromosome": "5"}
               },
               "xe": {"field": "end", "type": "genomic"},
@@ -142,14 +143,14 @@ const goslingSpec = {
                 "column": "position",
                 "value": "peak",
                 "categories": ["sample 1", "sample 2", "sample 3", "sample 4"],
-                "bin": 4
+                "binSize": 4
               },
               "mark": "bar",
               "x": {
                 "field": "start",
                 "type": "genomic",
                 "domain": {"chromosome": "16"},
-                "linkingID": "detail-2"
+                "linkingId": "detail-2"
               },
               "xe": {"field": "end", "type": "genomic"},
               "y": {"field": "peak", "type": "quantitative"},
