@@ -44,6 +44,9 @@ function App() {
     <GoslingComponent
       spec={EXAMPLE_GOSLING_SPEC}
       compiled={(spec, vConf) => { /* Callback function when compiled */ }}
+      padding={30} // Padding around this Gosling Component in px
+      id={"my-gosling-component-id"} // The id attribute of the root <div/> element of Gosling Component
+      style={"my-gosling-component-style"} // The style attribute of the root <div/> (default: "gosling-component")
     />
   );
 }
