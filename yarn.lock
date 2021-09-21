@@ -1432,7 +1432,7 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@gmod/bam@^1.1.6":
+"@gmod/bam@^1.1.8":
   version "1.1.8"
   resolved "https://registry.yarnpkg.com/@gmod/bam/-/bam-1.1.8.tgz#2e2442fbc7f1fd78b8b33455a4ee016d67e7f297"
   integrity sha512-ZMDGj64LEpfrA86NrjFnvL2Jl5vjqL7b2oyhS0+FX0XyMwl0BITI1/ocXx5d3jyVJNy/398Bvi7ploAvJOK7/w==
@@ -2328,6 +2328,11 @@
   integrity sha512-kSjgDMZONiIfSH1Nxcr5JIRMwUetDki63FSQfpTCz8ogF3Ulqm8+mr5f78dUYs6vMiB6gBusQqfQmBvHZj/lwg==
   dependencies:
     "@babel/types" "^7.3.0"
+
+"@types/bezier-js@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@types/bezier-js/-/bezier-js-4.1.0.tgz#e1b023cc0a6e53492d0249a0711a3e73d1dfc8fe"
+  integrity sha512-ElU16s8E6Pr6magp8ihwH1O8pbUJASbMND/qgUc9RsLmP3lMLHiDMRXdjtaObwW5GPtOVYOsXDUIhTIluT+yaw==
 
 "@types/color-name@^1.1.1":
   version "1.1.1"
@@ -3707,6 +3712,11 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
+bezier-js@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/bezier-js/-/bezier-js-4.1.1.tgz#414df656833104e86765c0fa5e31439fb3e83a34"
+  integrity sha512-oVOS6SSFFFlfnZdzC+lsfvhs/RRcbxJ47U04M4s5QIBaJmr3YWmTIL3qmrOK9uW+nUUcl9Jccmo/xpTrG+bBoQ==
+
 bfj@^7.0.2:
   version "7.0.2"
   resolved "https://registry.yarnpkg.com/bfj/-/bfj-7.0.2.tgz#1988ce76f3add9ac2913fd8ba47aad9e651bfbb2"
@@ -4302,7 +4312,7 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-classnames@2.x, classnames@^2.2.5:
+classnames@2.3.1, classnames@2.x, classnames@^2.2.5:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.1.tgz#dfcfa3891e306ec1dad105d0e88f4417b8535e8e"
   integrity sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==
@@ -4354,6 +4364,11 @@ cliui@^6.0.0:
     string-width "^4.2.0"
     strip-ansi "^6.0.0"
     wrap-ansi "^6.2.0"
+
+clsx@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/clsx/-/clsx-1.1.1.tgz#98b3134f9abbdf23b2663491ace13c5c03a73188"
+  integrity sha512-6/bPho624p3S2pMyvP5kKBPXnI3ufHLObBFCfgx+LkeR5lg2XYy2hqZqUf45ypD8COn2bhgGJSUE+l5dhNBieA==
 
 co@^4.6.0:
   version "4.6.0"
@@ -7023,17 +7038,24 @@ good-listener@^1.2.2:
   dependencies:
     delegate "^3.1.2"
 
-gosling.js@0.8.3:
-  version "0.8.3"
-  resolved "https://registry.yarnpkg.com/gosling.js/-/gosling.js-0.8.3.tgz#8af632d0bcdfa8aeae4f8ddcde814db49bf2cf9d"
-  integrity sha512-YMlPvmOF5pL8mFEFeKWdd+j74xTxmQLmhmHn+QSTPDFsIZVfaW27PXlk2VBndsYngWCn2aJJOBFtwZbltMIqzA==
+gosling-theme@0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/gosling-theme/-/gosling-theme-0.0.9.tgz#211f6f3076ca29041c19b91f6494813e2fe5cab6"
+  integrity sha512-7CPVrmPCFFE08rk+tM6AxoT5agKALrBYpwU/bdeAxxXnA2Jwoenso8MOA+bYbmblpQ3WGQDlhcCyUi3I1jG3Aw==
+
+gosling.js@^0.9.8:
+  version "0.9.8"
+  resolved "https://registry.yarnpkg.com/gosling.js/-/gosling.js-0.9.8.tgz#86e34fa7410d92d9ee13d47bf8a3432bb1c7a363"
+  integrity sha512-CyevfPnBS1czkRafFvXNiLUBgVQFVJyC04siXLc4ZY+ghjFAqG6DogaXNz9Q1tsk/go5leYgltItU7STdjzhWg==
   dependencies:
-    "@gmod/bam" "^1.1.6"
+    "@gmod/bam" "^1.1.8"
     "@gmod/bbi" "^1.0.30"
+    "@types/bezier-js" "^4.1.0"
     "@types/d3" "^5.7.2"
     "@types/lodash" "^4.14.151"
     "@types/node" "^12.0.0"
     "@types/uuid" "^8.3.0"
+    bezier-js "^4.1.1"
     box-intersect "^1.0.2"
     d3-array "^2.5.1"
     d3-color "^2.0.0"
@@ -7043,6 +7065,7 @@ gosling.js@0.8.3:
     d3-shape "^2.0.0"
     file-loader "^6.0.0"
     generic-filehandle "^2.0.3"
+    gosling-theme "0.0.9"
     higlass "^1.11.7"
     higlass-register "^0.3.0"
     higlass-text "^0.1.1"
@@ -7051,7 +7074,7 @@ gosling.js@0.8.3:
     lodash "^4.17.15"
     mixwith "^0.1.1"
     pubsub-js "^1.9.3"
-    raw-loader "^4.0.2"
+    react-grid-layout "^1.2.5"
     threads "^1.6.4"
     worker-loader "^3.0.8"
 
@@ -11107,7 +11130,7 @@ prop-types-extra@^1.0.1:
     react-is "^16.3.2"
     warning "^4.0.0"
 
-prop-types@15.x, prop-types@^15.5.10, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@15.x, prop-types@^15.0.0, prop-types@^15.5.10, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -11301,14 +11324,6 @@ raw-body@2.4.0:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
-raw-loader@^4.0.2:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/raw-loader/-/raw-loader-4.0.2.tgz#1aac6b7d1ad1501e66efdac1522c73e59a584eb6"
-  integrity sha512-ZnScIV3ag9A4wPX/ZayxL/jZH+euYb6FcUinPcgiQW0+UBtEv0O6Q3lGd3cqJ+GHH+rksEv3Pj99oxJ3u3VIKA==
-  dependencies:
-    loader-utils "^2.0.0"
-    schema-utils "^3.0.0"
-
 react-app-polyfill@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/react-app-polyfill/-/react-app-polyfill-2.0.0.tgz#a0bea50f078b8a082970a9d853dc34b6dcc6a3cf"
@@ -11451,6 +11466,14 @@ react-draggable@3.x:
     classnames "^2.2.5"
     prop-types "^15.6.0"
 
+react-draggable@^4.0.0:
+  version "4.4.4"
+  resolved "https://registry.yarnpkg.com/react-draggable/-/react-draggable-4.4.4.tgz#5b26d9996be63d32d285a426f41055de87e59b2f"
+  integrity sha512-6e0WdcNLwpBx/YIDpoyd2Xb04PB0elrDrulKUgdrIlwuYvxh5Ok9M+F8cljm8kPXXs43PmMzek9RrB1b7mLMqA==
+  dependencies:
+    clsx "^1.1.1"
+    prop-types "^15.6.0"
+
 react-draggable@^4.0.3:
   version "4.4.3"
   resolved "https://registry.yarnpkg.com/react-draggable/-/react-draggable-4.4.3.tgz#0727f2cae5813e36b0e4962bf11b2f9ef2b406f3"
@@ -11474,6 +11497,17 @@ react-grid-layout@^0.16.6:
     prop-types "15.x"
     react-draggable "3.x"
     react-resizable "1.x"
+
+react-grid-layout@^1.2.5:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/react-grid-layout/-/react-grid-layout-1.3.0.tgz#ca8a3e13e62ee2162fa658b1eec4b8eec0203dbd"
+  integrity sha512-WqFwybAItXu0AaSt9YL8+9xE5YotIzMcCYE0Q9XBqSKNyShTxPbC0LjObV/tOWZoADNWJ+osseVfRoZsjzwWXg==
+  dependencies:
+    classnames "2.3.1"
+    lodash.isequal "^4.0.0"
+    prop-types "^15.0.0"
+    react-draggable "^4.0.0"
+    react-resizable "^3.0.4"
 
 react-is@^16.13.1, react-is@^16.3.2, react-is@^16.8.1, react-is@^16.8.6:
   version "16.13.1"
@@ -11518,6 +11552,14 @@ react-resizable@1.x, react-resizable@^1.8.0:
   version "1.11.1"
   resolved "https://registry.yarnpkg.com/react-resizable/-/react-resizable-1.11.1.tgz#02ca6850afa7a22c1b3e623e64aef71ee252af69"
   integrity sha512-S70gbLaAYqjuAd49utRHibtHLrHXInh7GuOR+6OO6RO6uleQfuBnWmZjRABfqNEx3C3Z6VPLg0/0uOYFrkfu9Q==
+  dependencies:
+    prop-types "15.x"
+    react-draggable "^4.0.3"
+
+react-resizable@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/react-resizable/-/react-resizable-3.0.4.tgz#aa20108eff28c52c6fddaa49abfbef8abf5e581b"
+  integrity sha512-StnwmiESiamNzdRHbSSvA65b0ZQJ7eVQpPusrSmcpyGKzC0gojhtO62xxH6YOBmepk9dQTBi9yxidL3W4s3EBA==
   dependencies:
     prop-types "15.x"
     react-draggable "^4.0.3"
