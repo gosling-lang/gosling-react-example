@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/gosling-react/static/css/main.12f21662.chunk.css",
-    "main.js": "/gosling-react/static/js/main.73d47241.chunk.js",
-    "main.js.map": "/gosling-react/static/js/main.73d47241.chunk.js.map",
+    "main.js": "/gosling-react/static/js/main.6657b73a.chunk.js",
+    "main.js.map": "/gosling-react/static/js/main.6657b73a.chunk.js.map",
     "runtime-main.js": "/gosling-react/static/js/runtime-main.70129788.js",
     "runtime-main.js.map": "/gosling-react/static/js/runtime-main.70129788.js.map",
-    "static/js/2.266dfc7a.chunk.js": "/gosling-react/static/js/2.266dfc7a.chunk.js",
-    "static/js/2.266dfc7a.chunk.js.map": "/gosling-react/static/js/2.266dfc7a.chunk.js.map",
+    "static/js/2.291a3851.chunk.js": "/gosling-react/static/js/2.291a3851.chunk.js",
+    "static/js/2.291a3851.chunk.js.map": "/gosling-react/static/js/2.291a3851.chunk.js.map",
     "static/js/3.2238298b.chunk.js": "/gosling-react/static/js/3.2238298b.chunk.js",
     "static/js/3.2238298b.chunk.js.map": "/gosling-react/static/js/3.2238298b.chunk.js.map",
     "index.html": "/gosling-react/index.html",
     "static/css/main.12f21662.chunk.css.map": "/gosling-react/static/css/main.12f21662.chunk.css.map",
-    "static/js/2.266dfc7a.chunk.js.LICENSE.txt": "/gosling-react/static/js/2.266dfc7a.chunk.js.LICENSE.txt"
+    "static/js/2.291a3851.chunk.js.LICENSE.txt": "/gosling-react/static/js/2.291a3851.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.70129788.js",
-    "static/js/2.266dfc7a.chunk.js",
+    "static/js/2.291a3851.chunk.js",
     "static/css/main.12f21662.chunk.css",
-    "static/js/main.73d47241.chunk.js"
+    "static/js/main.6657b73a.chunk.js"
   ]
 }
