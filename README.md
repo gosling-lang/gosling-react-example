@@ -14,7 +14,6 @@ Add the following style sheets to your base `html` file:
 ```html
 <head>
   ...
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://unpkg.com/higlass@1.11.3/dist/hglib.css">
 </head>
 ```
