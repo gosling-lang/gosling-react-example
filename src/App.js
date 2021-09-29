@@ -1,6 +1,7 @@
-import './App.css';
 import React, { useEffect, useState, useRef } from 'react';
+import { debounce } from "lodash";
 import * as gosling from 'gosling.js';
+import './App.css';
 
 const goslingSpec = (domain, mark, binSize, height, hoveredSample) => { 
   return {
@@ -80,7 +81,6 @@ const goslingSpec = (domain, mark, binSize, height, hoveredSample) => {
 };
 
 function App() {
-
   const gosRef = useRef(null);
 
   const [min, setMin] = useState(0);
@@ -94,16 +94,9 @@ function App() {
 
     gosRef.current.api.subscribe(
       "mouseover",
-      (type, e) => {
+      debounce((type, e) => {
         setHoveredSample(e.data.sample);
-      }
-    );
-
-    gosRef.current.api.subscribe(
-      "mouseleave",
-      (type, e) => {
-        setHoveredSample();
-      }
+      }, 50)
     );
 
     return () => gosRef.current.api.unsubscribe("mouseover");
@@ -113,7 +106,7 @@ function App() {
     <>
       <span>
         <div style={{marginTop: 30, marginLeft: 80}}>
-          Bin Size:
+          {'Bin Size: '}
           <input 
             type="range" 
             min={0}
@@ -128,7 +121,7 @@ function App() {
           {binSize === 0 ? 1 : binSize}
         </div>
         <div style={{marginLeft: 80}}>
-          Color Min Value:
+          {'Color Min Value: '}
           <input 
             type="range" 
             min={0}
@@ -159,12 +152,13 @@ function App() {
         </div> */}
       </span>
       <div style={{marginTop: 30, marginLeft: 80}}>
-        Mark:
+        {'Mark: '}
         <select name="mark" onChange={(e) => setMark(e.currentTarget.value)}>
           <option value="rect">rect</option>
           <option value="point">point</option>
         </select>
       </div>
+      
       <gosling.GoslingComponent
         ref={gosRef}
         spec={goslingSpec([+min, 0.001], mark, binSize, height, hoveredSample)}
