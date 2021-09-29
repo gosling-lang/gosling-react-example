@@ -1,8 +1,8 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import * as gosling from 'gosling.js';
 
-const goslingSpec = (domain, mark, binSize, height) => { 
+const goslingSpec = (domain, mark, binSize, height, hoveredSample) => { 
   return {
     "layout": "linear",
     "arrangement": "vertical",
@@ -40,6 +40,38 @@ const goslingSpec = (domain, mark, binSize, height) => {
             ],
             "width": 600,
             height
+          },
+          {
+            alignment: "overlay",
+            "data": {
+              "url": "https://server.gosling-lang.org/api/v1/tileset_info/?d=cistrome-multivec",
+              "type": "multivec",
+              "row": "sample",
+              "column": "position",
+              "value": "peak",
+              "categories": ["sample 1", "sample 2", "sample 3", "sample 4"],
+              binSize: binSize === 0 ? 1 : binSize
+            },
+            "mark": 'point',
+            "x": {"field": "position", "type": "genomic", "axis": "top"},
+            "y": {"field": "peak", "type": "quantitative" },
+            opacity: { value: 0.6 },
+            // "row": {"field": "sample", "type": "nominal", "legend": true},
+            tracks: [
+              { 
+                "id": "track-2",
+                "color": { "value": "lightgray" } 
+              },
+              { 
+                "id": "track-3",
+                dataTransform: [
+                  { type: 'filter', field: 'sample', oneOf: [hoveredSample] }
+                ],
+                "color": { "value": "steelblue" } 
+              },
+            ],
+            "width": 600,
+            height
           }
         ]
       },
@@ -49,10 +81,33 @@ const goslingSpec = (domain, mark, binSize, height) => {
 
 function App() {
 
+  const gosRef = useRef(null);
+
   const [min, setMin] = useState(0);
   const [height, setHeight] = useState(130);
   const [mark, setMark] = useState('rect');
   const [binSize, setBinSize] = useState(0);
+  const [hoveredSample, setHoveredSample] = useState();
+
+  useEffect(() => {
+    if (!gosRef.current) return;
+
+    gosRef.current.api.subscribe(
+      "mouseover",
+      (type, e) => {
+        setHoveredSample(e.data.sample);
+      }
+    );
+
+    gosRef.current.api.subscribe(
+      "mouseleave",
+      (type, e) => {
+        setHoveredSample();
+      }
+    );
+
+    return () => gosRef.current.api.unsubscribe("mouseover");
+  }, [gosRef]);
 
   return (
     <>
@@ -111,7 +166,8 @@ function App() {
         </select>
       </div>
       <gosling.GoslingComponent
-        spec={goslingSpec([+min, 0.001], mark, binSize, height)}
+        ref={gosRef}
+        spec={goslingSpec([+min, 0.001], mark, binSize, height, hoveredSample)}
         experimental={{ reactive: true }}
       />
     </>
