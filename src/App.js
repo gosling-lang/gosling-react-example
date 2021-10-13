@@ -3,7 +3,7 @@ import { debounce } from "lodash";
 import * as gosling from 'gosling.js';
 import './App.css';
 
-const goslingSpec = (domain, mark, binSize, height, hoveredSample) => { 
+const goslingSpec = (domain, mark, binSize, width, height, hoveredSample) => { 
   return {
     "layout": "linear",
     "arrangement": "vertical",
@@ -39,7 +39,7 @@ const goslingSpec = (domain, mark, binSize, height, hoveredSample) => {
               },
               {"field": "sample", "type": "nominal", "alt": "Sample"}
             ],
-            "width": 600,
+            width,
             height
           },
           {
@@ -71,7 +71,7 @@ const goslingSpec = (domain, mark, binSize, height, hoveredSample) => {
                 "color": { "value": "steelblue" } 
               },
             ],
-            "width": 600,
+            width,
             height
           }
         ]
@@ -88,6 +88,7 @@ function App() {
   const [mark, setMark] = useState('rect');
   const [binSize, setBinSize] = useState(0);
   const [hoveredSample, setHoveredSample] = useState();
+  const [width, setWidth] = useState(600);
 
   useEffect(() => {
     if (!gosRef.current) return;
@@ -135,21 +136,21 @@ function App() {
           />
           {min}
         </div>
-        {/* <div style={{marginLeft: 80}}>
-          Height:
+        <div style={{marginLeft: 80}}>
+          Width:
           <input 
             type="range" 
-            min={130}
-            max={300}
+            min={200}
+            max={800}
             step={10} 
-            value={height}
+            value={width}
             className="slider" 
             id="height-slider" 
             style={{ width: 100, display: 'inline', margin: 10}}
-            onChange={(e) => setHeight(e.currentTarget.value) }
+            onChange={(e) => setWidth(e.currentTarget.value) }
           />
-          {height}
-        </div> */}
+          {width}
+        </div>
       </span>
       <div style={{marginTop: 30, marginLeft: 80}}>
         {'Mark: '}
@@ -161,7 +162,7 @@ function App() {
       
       <gosling.GoslingComponent
         ref={gosRef}
-        spec={goslingSpec([+min, 0.001], mark, binSize, height, hoveredSample)}
+        spec={goslingSpec([+min, 0.001], mark, binSize, width, height, hoveredSample)}
         experimental={{ reactive: true }}
       />
     </>
