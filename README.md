@@ -1,6 +1,8 @@
 # Gosling React Template
 
-This repository describes a way to embed [Gosling.js](https://github.com/gosling-lang/gosling.js) visualization in your webpage using [React](https://reactjs.org). To make the process simple, this repository is based on [Create React App](https://reactjs.org/docs/create-a-new-react-app.html#create-react-app), but you can use React without Create React App as well. You can checkout the online demo of this repository at https://gosling-lang.github.io/gosling-react/.
+This repository describes a way to embed [Gosling.js](https://github.com/gosling-lang/gosling.js) visualization in your webpage using [React](https://reactjs.org). To make the process simple, this repository is based on [Create React App](https://reactjs.org/docs/create-a-new-react-app.html#create-react-app), but you can use React without Create React App as well. 
+
+Checkout the online demo of this repository at https://gosling-lang.github.io/gosling-react/.
 
 To start, you can fork this template repository or follow the instructions described below.
 
@@ -19,11 +21,11 @@ Install `gosling.js` and its dependent libraries:
 npm add gosling.js higlass pixi.js
 ```
 
-> **Note** The compatible versions of React and React Dom is behind their current versions. If their versions in your `package.json` file are higher than `16.13.1`, you need to use lower versions:
-> ```
+> **Note** The compatible versions of React and React Dom are behind their current versions. If their versions in your `package.json` file are higher than `16.13.1`, you need to use lower versions:
+> ```sh
 > npm add react@16.13.1 react-dom@16.13.1 react-scripts@4.0.2
 > ```
-> If you were using 18.0.0 or higher versions, you will need to edit your codes reflecting the major version change. For example, see https://stackoverflow.com/questions/46566830/how-to-use-create-react-app-with-an-older-react-version.
+> If you were using 18.0.0 or higher versions, you will need to edit your codes reflecting the major version change of React. For example, see https://stackoverflow.com/questions/46566830/how-to-use-create-react-app-with-an-older-react-version.
 
 Add the following stylesheet to `public/index.html`:
 ```html
