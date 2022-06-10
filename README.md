@@ -62,7 +62,7 @@ function App() {
       }}
       // Styles of Gosling Component
       margin={0}
-      padding={30} // Padding around this  in px
+      padding={30}
       border={'none'}
       id={"my-gosling-component-id"}
       className={"my-gosling-component-style"}
