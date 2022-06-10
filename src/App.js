@@ -13,6 +13,7 @@ const goslingSpec = (domain, mark, binSize, height, hoveredSample) => {
       {
         "tracks": [
           {
+            experimental: { mouseEvents: true },
             "id": "track-1",
             "data": {
               "url": "https://server.gosling-lang.org/api/v1/tileset_info/?d=cistrome-multivec",
@@ -43,6 +44,7 @@ const goslingSpec = (domain, mark, binSize, height, hoveredSample) => {
             height
           },
           {
+            experimental: { mouseEvents: true },
             alignment: "overlay",
             "data": {
               "url": "https://server.gosling-lang.org/api/v1/tileset_info/?d=cistrome-multivec",
@@ -93,13 +95,13 @@ function App() {
     if (!gosRef.current) return;
 
     gosRef.current.api.subscribe(
-      "mouseover",
+      "click",
       debounce((type, e) => {
-        setHoveredSample(e.data.sample);
+        setHoveredSample(e.data[0]?.sample);
       }, 50)
     );
 
-    return () => gosRef.current.api.unsubscribe("mouseover");
+    return () => gosRef.current.api.unsubscribe("click");
   }, [gosRef]);
 
   return (
@@ -135,21 +137,6 @@ function App() {
           />
           {min}
         </div>
-        {/* <div style={{marginLeft: 80}}>
-          Height:
-          <input 
-            type="range" 
-            min={130}
-            max={300}
-            step={10} 
-            value={height}
-            className="slider" 
-            id="height-slider" 
-            style={{ width: 100, display: 'inline', margin: 10}}
-            onChange={(e) => setHeight(e.currentTarget.value) }
-          />
-          {height}
-        </div> */}
       </span>
       <div style={{marginTop: 30, marginLeft: 80}}>
         {'Mark: '}

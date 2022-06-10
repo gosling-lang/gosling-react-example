@@ -6,7 +6,7 @@ This repository describes a way to embed [Gosling.js](https://github.com/gosling
 Install `gosling.js` and its dependent libraries:
 
 ```sh
-yarn add gosling.js pixi.js
+yarn add gosling.js higlass pixi.js
 yarn add react@16.13.1 react-dom@16.13.1 # if not using `create-react-app`
 ```
 
@@ -45,7 +45,7 @@ function App() {
       compiled={(spec, vConf) => { /* Callback function when compiled */ }}
       padding={30} // Padding around this Gosling Component in px
       id={"my-gosling-component-id"} // The id attribute of the root <div/> element of Gosling Component
-      style={"my-gosling-component-style"} // The style attribute of the root <div/> (default: "gosling-component")
+      className={"my-gosling-component-style"} // The style attribute of the root <div/> (default: "gosling-component")
     />
   );
 }
