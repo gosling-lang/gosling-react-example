@@ -23,7 +23,7 @@ npm add gosling.js higlass pixi.js
 > ```
 > npm add react@16.13.1 react-dom@16.13.1 react-scripts@4.0.2
 > ```
-> Also, if you were using 18+ versions, you will need to edit your codes reflecting the major version change. For example, refer to https://stackoverflow.com/questions/46566830/how-to-use-create-react-app-with-an-older-react-version.
+> If you were using 18.0.0 or higher versions, you will need to edit your codes reflecting the major version change. For example, see https://stackoverflow.com/questions/46566830/how-to-use-create-react-app-with-an-older-react-version.
 
 Add the following stylesheet to `public/index.html`:
 ```html
