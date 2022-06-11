@@ -4,7 +4,7 @@ This repository describes a way to embed [Gosling.js](https://github.com/gosling
 
 Checkout the online demo of this repository at https://gosling-lang.github.io/gosling-react/.
 
-To start, you can fork this template repository or follow the instructions described below.
+To start, you can either fork this template repository or follow the instructions described below.
 
 ## Using Create React App
 
@@ -79,7 +79,7 @@ Run the demo in your browser:
 rpm run start
 ```
 
-## Using This Repo
+## Using This Repository
 
 Fork this repository, and then clone it.
 
@@ -97,7 +97,7 @@ npm install
 Run the demo in your browser:
 
 ```sh
-rpm run start
+npm run start
 ```
 
 ## Resource
