@@ -21,7 +21,7 @@ Install `gosling.js` and its dependent libraries:
 npm add gosling.js higlass pixi.js
 ```
 
-> **Note** The compatible versions of React and React Dom are behind their current versions. If their versions in your `package.json` file are higher than `16.13.1`, you need to use lower versions:
+> **Note** The compatible versions of React (`react`) and ReactDOM (`react-dom`) are behind their current versions. If their versions in your `package.json` file are higher than `16.13.1`, you need to lower the versions:
 > ```sh
 > npm add react@16.13.1 react-dom@16.13.1 react-scripts@4.0.2
 > ```
