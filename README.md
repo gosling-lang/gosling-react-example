@@ -102,4 +102,4 @@ rpm run start
 
 ## Resource
 
-- Gosling Editor(https://gosling.js.org/, https://github.com/gosling-lang/gosling.js) is based on `<GoslingComponent/>`
+- Gosling Editor ([demo](https://gosling.js.org/), [code](https://github.com/gosling-lang/gosling.js)) is also based on `<GoslingComponent/>`
