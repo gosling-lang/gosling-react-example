@@ -79,6 +79,59 @@ Run the demo in your browser:
 rpm run start
 ```
 
+## Gosling API
+
+To use the Gosling API, we need to create a reference to the GoslingComponent.
+
+```javascript
+const gosRef = React.useRef(null)
+
+<GoslingComponent
+  ref = {gosRef}
+  spec = {/**your gosling spec**/}
+/>
+
+if (gosRef.current) {
+  // then you can use any Gosling API you want
+  gosRef.current.api.exportPdf();
+}
+//
+```
+
+Below is an example
+```javascript
+import React, { useRef, useEffect } from "react";
+import { GoslingComponent} from 'gosling.js';
+
+function app(){
+  const gosRef = useRef(null)
+  
+  useEffect(() => {
+    if (gosRef.current) {
+      gosRef.current.api.subscribe('click', (type, eventData) => {
+            console.warn(type, eventData.data);
+      })
+    }
+    return ()=>{
+      // remember to unsubscribe events
+      gosRef.current?.api.unsubscribe('click');
+    }
+  }, [gosRef.current])
+
+  return <div>
+    <GoslingComponent
+      ref = {gosRef}
+      spec = {/**your gosling spec**/}
+    />
+    <button type="button" onClick={()=>gosRef.current?.api.exportPdf();}>
+      Export PDF
+     </button>
+  </div>
+}
+```
+
+Please refer to [gosling doc](http://gosling-lang.org/docs/js-api) for a complete list of Gosling API.
+
 ## Using This Repository
 
 Fork this repository, and then clone it.
