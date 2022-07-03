@@ -1,6 +1,6 @@
 # Gosling React Template
 
-This repository describes a way to embed [Gosling.js](https://github.com/gosling-lang/gosling.js) visualization in your webpage using [React](https://reactjs.org). To make the process simple, this repository is based on [Create React App](https://reactjs.org/docs/create-a-new-react-app.html#create-react-app), but you can use React without Create React App as well. 
+This repository describes a way to embed [Gosling.js](https://github.com/gosling-lang/gosling.js) visualization in your webpage using [React](https://reactjs.org) and also use Gosling API functions, such as looking up clicked genomic region and raw data or zooming to a certain gene using a text input. To make the process simple, this repository is based on [Create React App](https://reactjs.org/docs/create-a-new-react-app.html#create-react-app), but you can use React without Create React App as well. 
 
 Checkout the online demo of this repository at https://gosling-lang.github.io/gosling-react/.
 
