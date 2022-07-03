@@ -95,7 +95,6 @@ if (gosRef.current) {
   // then you can use any Gosling API you want
   gosRef.current.api.exportPdf();
 }
-//
 ```
 
 Below is an example
