@@ -81,7 +81,7 @@ rpm run start
 
 ## Gosling API
 
-To use the Gosling API, we need to create a reference to the GoslingComponent.
+To use the Gosling API, you need to create a [Ref](https://reactjs.org/docs/refs-and-the-dom.html) that stores a reference to the GoslingComponent.
 
 ```javascript
 const gosRef = React.useRef(null)
@@ -109,6 +109,7 @@ function app(){
   useEffect(() => {
     if (gosRef.current) {
       gosRef.current.api.subscribe('click', (type, eventData) => {
+            // print raw data that corresponds to the clicked mark
             console.warn(type, eventData.data);
       })
     }
@@ -123,14 +124,14 @@ function app(){
       ref = {gosRef}
       spec = {/**your gosling spec**/}
     />
-    <button type="button" onClick={()=>gosRef.current?.api.exportPdf();}>
+    <button type="button" onClick={()=>gosRef.current?.api.exportPdf()}>
       Export PDF
      </button>
   </div>
 }
 ```
 
-Please refer to [gosling doc](http://gosling-lang.org/docs/js-api) for a complete list of Gosling API.
+Please refer to [Gosling documentation](http://gosling-lang.org/docs/js-api) for a complete list of Gosling API.
 
 ## Using This Repository
 
