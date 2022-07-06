@@ -1,22 +1,25 @@
 import * as React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import SimpleExample from "./example/Simple";
 import VegaLiteExample from "./example/VegaLite";
 
-const baseUrl = 'gosling-react';
-
 // The full list of examples
 const examples = {
-    'simple': <SimpleExample/>,
-    'vega-lite': <VegaLiteExample/>,
+    'Simple': <SimpleExample/>,
+    'Vega-Lite': <VegaLiteExample/>,
 }
 
 function App() {
   return (
     <div className="App">
-      {Object.entries(examples).map(entry => <span key={entry[0]} style={{ marginRight: '6px' }}><a href={`/${baseUrl}/${entry[0]}`}>{entry[0]}</a></span>)}
+      <h1>Gosling React Examples</h1>
+      {/* Examples */}
+      <ol>
+        {Object.entries(examples).map(entry => <li key={entry[0]}><Link to={`/${entry[0]}`}>{entry[0]}</Link></li>)}
+      </ol>
+      {/* Example Page */}
       <Routes>
-        {Object.entries(examples).map(entry => <Route key={entry[0]} path={`/${baseUrl}/${entry[0]}`} element={entry[1]}/>)}
+        {Object.entries(examples).map(entry => <Route key={entry[0]} path={`/${entry[0]}`} element={entry[1]}/>)}
       </Routes>
     </div>
   );
