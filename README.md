@@ -156,3 +156,16 @@ npm run start
 ## Resource
 
 - Gosling Editor ([demo](https://gosling.js.org/), [code](https://github.com/gosling-lang/gosling.js)) is also based on `<GoslingComponent/>`
+
+## Troubleshooting
+
+```
+npm ERR! code ERESOLVE
+npm ERR! ERESOLVE unable to resolve dependency tree
+```
+
+If you confront this error message when trying to install dependencies, add a `--force` tag:
+
+```
+npm add gosling.js higlass pixi.js --force
+```
