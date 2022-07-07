@@ -7,6 +7,8 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "eslint": "^7.32.0",
+    "eslint-plugin-react": "^7.30.1",
     "gosling.js": "^0.9.20",
     "higlass": "^1.11.11",
     "pixi.js": "6.0.4",
@@ -21,6 +23,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "format": "npx eslint --fix --ext .js src/",
     "eject": "react-scripts eject",
     "deploy": "yarn build; touch build/.nojekyll; gh-pages -d build -t --git git"
   },
