@@ -105,7 +105,7 @@ import React, { useRef, useEffect } from "react";
 import { GoslingComponent} from 'gosling.js';
 
 function app(){
-  const gosRef = useRef(null)
+  const gosRef = useRef(null);
   
   useEffect(() => {
     if (gosRef.current) {
@@ -118,17 +118,19 @@ function app(){
       // remember to unsubscribe events
       gosRef.current?.api.unsubscribe('click');
     }
-  }, [gosRef.current])
+  }, [gosRef.current]);
 
-  return <div>
-    <GoslingComponent
-      ref = {gosRef}
-      spec = {/**your gosling spec**/}
-    />
-    <button type="button" onClick={()=>gosRef.current?.api.exportPdf()}>
-      Export PDF
-     </button>
-  </div>
+  return (
+    <div>
+      <GoslingComponent
+        ref = {gosRef}
+        spec = {/**your gosling spec**/}
+      />
+      <button type="button" onClick={() => gosRef.current?.api.exportPdf()}>
+        Export PDF
+      </button>
+    </div>
+  );
 }
 ```
 

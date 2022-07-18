@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { GoslingComponent } from 'gosling.js';
 
-const MARK_OPTIONS = ["point", "bar", "line", "area"];
+const MARK_OPTIONS = ['point', 'bar', 'line', 'area'];
 const LAYOUT_OPTIONS = ['linear', 'circular'];
 
 const goslingSpec = (mark, layout, binSize) => {
@@ -53,7 +53,7 @@ const goslingSpec = (mark, layout, binSize) => {
 	}
 };
 
-function Widget() {
+function WidgetEncoding() {
 	const gosRef = useRef(null);
 
 	const [mark, setMark] = useState('point');
@@ -101,4 +101,4 @@ function Widget() {
 	);
 }
 
-export default Widget;
+export default WidgetEncoding;

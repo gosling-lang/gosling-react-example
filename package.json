@@ -9,7 +9,7 @@
     "@testing-library/user-event": "^12.1.10",
     "eslint": "^7.32.0",
     "eslint-plugin-react": "^7.30.1",
-    "gosling.js": "^0.9.20",
+    "gosling.js": "^0.9.21",
     "higlass": "^1.11.11",
     "pixi.js": "6.0.4",
     "react": "16.13.1",
