@@ -5,22 +5,16 @@ function SimpleExample() {
 	return (
 		<>
 			<GoslingComponent
-				spec={{ 
+				spec={{
 					tracks: [{
 						id: 'heatmap-track',
 						data: {
-							url: 'https://raw.githubusercontent.com/ThHarbig/gosling-react/master/GCF_000005845.2_ASM584v2_genomic.gff',
+							url: 'https://raw.githubusercontent.com/ThHarbig/gosling-react/master/proteins_167_161521.csv',
 							type: 'csv',
-							column: 'position',
-							value: 'peak',
-							categories: ['sample 1', 'sample 2', 'sample 3', 'sample 4'],
-							binSize: 4
+							chromosomeField: 'Locus tag',
+							genomicFields: ['Start', 'Stop']
 						},
 						mark: 'rect',
-						x: { field: 'start', type: 'genomic' },
-						xe: { field: 'end', type: 'genomic' },
-						row: { field: 'sample', type: 'nominal', legend: true },
-						color: { field: 'peak', type: 'quantitative', legend: true, range: 'pink' },
 						width: 600,
 						height: 130
 					}]

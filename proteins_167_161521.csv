@@ -1,4 +1,4 @@
-#Name,Accession,Start,Stop,Strand,GeneID,Locus,Locus tag,Protein product,Length,Protein Name
+Name,Accession,Start,Stop,Strand,GeneID,Locus,Locus tag,Protein product,Length,Protein Name
 "chromosome","NC_000913.3",190,255,"+",944742,"thrL","b0001","NP_414542.1",21,"thr operon leader peptide"
 "chromosome","NC_000913.3",337,2799,"+",945803,"thrA","b0002","NP_414543.1",820,"fused aspartate kinase/homoserine dehydrogenase 1"
 "chromosome","NC_000913.3",2801,3733,"+",947498,"thrB","b0003","NP_414544.1",310,"homoserine kinase"
