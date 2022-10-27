@@ -9,9 +9,8 @@ function SimpleExample() {
 					tracks: [{
 						id: 'heatmap-track',
 						data: {
-							url: 'https://server.gosling-lang.org/api/v1/tileset_info/?d=cistrome-multivec',
-							type: 'multivec',
-							row: 'sample',
+							url: 'https://raw.githubusercontent.com/ThHarbig/gosling-react/master/GCF_000005845.2_ASM584v2_genomic.gff',
+							type: 'csv',
 							column: 'position',
 							value: 'peak',
 							categories: ['sample 1', 'sample 2', 'sample 3', 'sample 4'],
