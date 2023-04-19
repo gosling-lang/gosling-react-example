@@ -4,7 +4,7 @@ This repository describes a way to embed [Gosling.js](https://github.com/gosling
 
 All examples can be found as separate files under a [src/example](/src/example/) folder.
 
-Checkout the online demo of this repository at https://gosling-lang.github.io/gosling-react/.
+Checkout the online demo of this repository at https://gosling-lang.github.io/gosling-react-template/.
 
 To start, you can either fork this template repository or follow the instructions described below.
 
@@ -141,8 +141,8 @@ Please refer to [Gosling documentation](http://gosling-lang.org/docs/js-api) for
 Fork this repository, and then clone it.
 
 ```sh
-git clone https://github.com/[YOUR GITHUB ID]/gosling-react.git
-cd gosling-react
+git clone https://github.com/[YOUR GITHUB ID]/gosling-react-template.git
+cd gosling-react-template
 ```
 
 Install all dependencies:
