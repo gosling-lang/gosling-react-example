@@ -16,8 +16,8 @@ function IslandViewer() {
 							title: 'Islands',
 							layout:'circular',
 							data: {
-								type: 'tsv',
-								url: 'https://raw.githubusercontent.com/ThHarbig/gosling-react/master/NC_004631.1',
+								type: 'csv',
+								url: 'https://raw.githubusercontent.com/ThHarbig/gosling-react/master/NC_004631.1.csv',
 								chromosomeField: 'Accession',
 								genomicFields: ['Island start', 'Island end']
 							},
