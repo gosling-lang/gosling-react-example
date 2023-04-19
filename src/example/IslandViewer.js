@@ -6,18 +6,18 @@ function IslandViewer() {
 		<>
 			<GoslingComponent
 				spec={{
-					title: 'SARS-CoV-2',
+					title: 'IslandViewer',
 					subtitle: 'Data Source: WashU Virus Genome Browser, NCBI, GISAID',
-					assembly: [['NC_045512.2', 29903]],
+					assembly: [['NC_000913.3', 4641628]],
 					layout: 'linear',
 					spacing: 50,
 					views: [
 						{
 							alignment: 'overlay',
-							title: 'NC_045512.2 Genes',
+							title: 'NC_000913.3 Genes',
 							data: {
 								type: 'csv',
-								url: 'https://s3.amazonaws.com/gosling-lang.org/data/COVID/NC_045512.2-Genes.csv',
+								url: 'https://raw.githubusercontent.com/ThHarbig/gosling-react/master/NC_004631.1',
 								chromosomeField: 'Accession',
 								genomicFields: ['Start', 'Stop']
 							},
@@ -69,10 +69,10 @@ function IslandViewer() {
 							tracks: [
 								{
 									alignment: 'overlay',
-									title: 'NC_045512.2 Genes',
+									title: 'NC_000913.3 Genes',
 									data: {
 										type: 'csv',
-										url: 'https://s3.amazonaws.com/gosling-lang.org/data/COVID/NC_045512.2-Genes.csv',
+										url: 'https://raw.githubusercontent.com/ThHarbig/gosling-react/master/NC_004631.1',
 										chromosomeField: 'Accession',
 										genomicFields: ['Start', 'Stop']
 									},

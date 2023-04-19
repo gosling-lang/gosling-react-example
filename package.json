@@ -9,7 +9,7 @@
     "@testing-library/user-event": "^12.1.10",
     "eslint": "^7.32.0",
     "eslint-plugin-react": "^7.30.1",
-    "gosling.js": "^0.9.21",
+    "gosling.js": "^0.9.28",
     "higlass": "^1.11.11",
     "pixi.js": "6.0.4",
     "react": "16.13.1",
@@ -33,18 +33,11 @@
       "react-app/jest"
     ]
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
+ "browserslist": [
+   ">0.2%",
+  "not dead",
+  "not op_mini all"
+],
   "devDependencies": {
     "gh-pages": "^3.1.0"
   }
