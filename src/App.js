@@ -5,6 +5,7 @@ import VegaLiteExample from './example/VegaLite';
 import WidgetEncoding from './example/WidgetEncoding';
 import WidgetNavigation from './example/WidgetNavigation';
 import MouseEvents from './example/MouseEvents';
+import IslandViewer from './example/IslandViewer';
 
 // The full list of examples
 const examples = {
@@ -13,6 +14,7 @@ const examples = {
 	'Widget (Navigation)': <WidgetNavigation/>,
 	'Mouse Events': <MouseEvents/>,
 	'Vega-Lite': <VegaLiteExample/>,
+	IslandViewer: <IslandViewer/>
 }
 
 function App() {
