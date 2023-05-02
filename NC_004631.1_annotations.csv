@@ -1,0 +1,59 @@
+Protein ID,Type,Source,Gene start
+WP_000444726.1,Victors,http://www.phidias.us/victors/gene_detail.php?c_mc_victor_id=2328,1892143
+WP_000388328.1,Victors,http://www.phidias.us/victors/gene_detail.php?c_mc_victor_id=2323,1340873
+WP_000972855.1,Victors,http://www.phidias.us/victors/gene_detail.php?c_mc_victor_id=3424,1338007
+WP_000383695.1,Victors,http://www.phidias.us/victors/gene_detail.php?c_mc_victor_id=2324,1347709
+WP_000916657.1,Victors,http://www.phidias.us/victors/gene_detail.php?c_mc_victor_id=2317,2851668
+WP_000621241.1,Victors,http://www.phidias.us/victors/gene_detail.php?c_mc_victor_id=2315,2852867
+WP_001079758.1,Victors,http://www.phidias.us/victors/gene_detail.php?c_mc_victor_id=2322,1339403
+WP_001166955.1,Victors,http://www.phidias.us/victors/gene_detail.php?c_mc_victor_id=2327,1890441
+WP_001258227.1,Victors,http://www.phidias.us/victors/gene_detail.php?c_mc_victor_id=2325,1348062
+WP_001081596.1,Victors,http://www.phidias.us/victors/gene_detail.php?c_mc_victor_id=2314,2852296
+WP_000972855.1,PATRIC_VF,http://patricbrc.org/portal/portal/patric/Feature?cType=feature&cId=32333773,1338007
+WP_000466893.1,PATRIC_VF,http://patricbrc.org/portal/portal/patric/Feature?cType=feature&cId=18558513,4505427
+WP_000720235.1,PATRIC_VF,http://patricbrc.org/portal/portal/patric/Feature?cType=feature&cId=18558505,4499011
+WP_000632615.1,PATRIC_VF,http://patricbrc.org/portal/portal/patric/Feature?cType=feature&cId=18558507,4500123
+WP_000127915.1,PATRIC_VF,http://patricbrc.org/portal/portal/patric/Feature?cType=feature&cId=18558511,4504378
+WP_000088491.1,PATRIC_VF,http://patricbrc.org/portal/portal/patric/Feature?cType=feature&cId=18557323,3920109
+WP_001258227.1,PATRIC_VF,http://patricbrc.org/portal/portal/patric/Feature?cType=feature&cId=18551783,1348062
+WP_000376863.1,PATRIC_VF,http://patricbrc.org/portal/portal/patric/Feature?cType=feature&cId=18557325,3921140
+WP_000666335.1,BLAST,Annotation transfer from NP_460356.1,1330634
+WP_000350226.1,BLAST,Annotation transfer from NP_460371.1,1343943
+WP_000094422.1,BLAST,Annotation transfer from NP_460363.1,1338340
+WP_001738217.1,BLAST,Annotation transfer from NP_460358.1,1334466
+WP_001223304.1,BLAST,Annotation transfer from NP_460382.1,1351759
+WP_001023498.1,BLAST,Annotation transfer from NP_458733.1,4498207
+WP_000388328.1,BLAST,Annotation transfer from NP_456127.1,1340873
+WP_001111006.1,BLAST,Annotation transfer from NP_460065.1,1889939
+WP_000915523.1,BLAST,Annotation transfer from NP_459552.1,2371423
+WP_001210944.1,BLAST,Annotation transfer from NP_458741.1,4506949
+WP_000444726.1,BLAST,Annotation transfer from NP_455587.1,1892143
+WP_001738217.1,BLAST,Annotation transfer from NP_456135.1,1334466
+WP_000720235.1,BLAST,Annotation transfer from NP_458734.1,4499011
+WP_000388328.1,BLAST,Annotation transfer from WP_000388328.1,1340873
+WP_000383695.1,BLAST,Annotation transfer from NP_456115.1,1347709
+WP_000444726.1,BLAST,Annotation transfer from WP_000444726.1,1892143
+WP_000720235.1,BLAST,Annotation transfer from WP_000720235.1,4499011
+WP_000383695.1,BLAST,Annotation transfer from WP_000383695.1,1347709
+WP_000916657.1,BLAST,Annotation transfer from WP_000916657.1,2851668
+WP_000127915.1,BLAST,Annotation transfer from NP_458739.1,4504378
+WP_001258227.1,BLAST,Annotation transfer from NP_456114.1,1348062
+WP_000127915.1,BLAST,Annotation transfer from WP_000127915.1,4504378
+WP_001258227.1,BLAST,Annotation transfer from WP_001258227.1,1348062
+WP_000621241.1,BLAST,Annotation transfer from NP_457265.1,2852867
+WP_000052242.1,BLAST,Annotation transfer from NP_458730.1,4494169
+WP_001079758.1,BLAST,Annotation transfer from NP_456128.1,1339403
+WP_000088491.1,BLAST,Annotation transfer from WP_000088491.1,3920109
+WP_001166955.1,BLAST,Annotation transfer from NP_455588.1,1890441
+WP_000621241.1,BLAST,Annotation transfer from WP_000621241.1,2852867
+WP_001166955.1,BLAST,Annotation transfer from WP_001166955.1,1890441
+WP_000431675.1,BLAST,Annotation transfer from NP_458731.1,4496159
+WP_001079758.1,BLAST,Annotation transfer from WP_001079758.1,1339403
+WP_000972855.1,BLAST,Annotation transfer from WP_000972855.1,1338007
+WP_000376863.1,BLAST,Annotation transfer from WP_000376863.1,3921140
+WP_000467404.1,BLAST,Annotation transfer from NP_458732.1,4497486
+WP_000466893.1,BLAST,Annotation transfer from NP_458740.1,4505427
+WP_000466893.1,BLAST,Annotation transfer from WP_000466893.1,4505427
+WP_014341569.1,BLAST,Annotation transfer from NP_458738.1,4501859
+WP_001738217.1,BLAST,Annotation transfer from WP_001539910.1,1334466
+WP_000632615.1,BLAST,Annotation transfer from NP_458735.1,4500123
