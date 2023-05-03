@@ -15,6 +15,7 @@ const examples = {
 	'Mouse Events': <MouseEvents/>,
 	'Vega-Lite': <VegaLiteExample/>,
 	IslandViewer: <IslandViewer/>,
+
 }
 
 function App() {
