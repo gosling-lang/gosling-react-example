@@ -1,11 +1,11 @@
 import React from 'react';
-import {GoslingComponent} from 'gosling.js';
+import { GoslingComponent } from 'gosling.js';
 
 function SimpleExample() {
 	return (
 		<>
 			<GoslingComponent
-				spec={{
+				spec={{ 
 					tracks: [{
 						id: 'heatmap-track',
 						data: {
