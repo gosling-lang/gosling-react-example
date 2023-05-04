@@ -5,7 +5,7 @@ import {useEffect, useRef} from 'react';
 const islandData = {
 	data: {
 		type: 'csv',
-		url: 'https://raw.githubusercontent.com/ThHarbig/gosling-react/master/NC_004631.1_islands.csv',
+		url: 'https://s3.amazonaws.com/gosling-lang.org/data/IslandViewer/NC_004631.1_islands.csv',
 		chromosomeField: 'Accession',
 		genomicFields: ['Island start', 'Island end']
 	},
@@ -27,7 +27,7 @@ const mainComponent = {
 			layout: 'circular',
 			data: {
 				type: 'csv',
-				url: 'https://raw.githubusercontent.com/ThHarbig/gosling-react/master/NC_004631.1_islands.csv',
+				url: 'https://s3.amazonaws.com/gosling-lang.org/data/IslandViewer/NC_004631.1_islands.csv',
 				chromosomeField: 'Accession',
 				genomicFields: ['Island start', 'Island end']
 			},
@@ -36,7 +36,7 @@ const mainComponent = {
 			tracks: [
 				{
 					data: {
-						url: 'https://raw.githubusercontent.com/ThHarbig/gosling-react/master/NC_004631.1_annotations.csv',
+						url: 'https://s3.amazonaws.com/gosling-lang.org/data/IslandViewer/NC_004631.1_annotations.csv',
 						type: 'csv',
 						chromosomeField: 'Accession',
 						genomicFields: ['Gene start']
@@ -60,8 +60,8 @@ const mainComponent = {
 					color: {
 						field: 'Type',
 						type: 'nominal',
-						domain: ['Victors', 'BLAST','RGI','PAG'],
-						range: ['#460B80', '#A684EA','#FF9CC1','#FF9CC1']
+						domain: ['Victors', 'BLAST', 'RGI', 'PAG'],
+						range: ['#460B80', '#A684EA', '#FF9CC1', '#FF9CC1']
 					},
 				},
 				{
@@ -73,8 +73,8 @@ const mainComponent = {
 					color: {
 						field: 'Method',
 						type: 'nominal',
-						domain: ['Predicted by at least one method','IslandPath-DIMOB','SIGI-HMM','IslandPick','Islander'],
-						range: ['#B22222','#4169E1','#FF8C00','#008001','#40E0D0'],
+						domain: ['Predicted by at least one method', 'IslandPath-DIMOB', 'SIGI-HMM', 'IslandPick', 'Islander'],
+						range: ['#B22222', '#4169E1', '#FF8C00', '#008001', '#40E0D0'],
 					},
 					mark: 'rect'
 				},
@@ -82,7 +82,7 @@ const mainComponent = {
 					mark: 'brush', x: {linkingId: 'detail'}
 				}
 			],
-			width: circularRadius*2,
+			width: circularRadius * 2,
 			centerRadius: centerRadius
 		},
 		{
@@ -93,7 +93,7 @@ const mainComponent = {
 			tracks: [
 				{
 					data: {
-						url: 'https://raw.githubusercontent.com/ThHarbig/gosling-react/master/NC_004631.1_genes_full.csv',
+						url: 'https://s3.amazonaws.com/gosling-lang.org/data/IslandViewer/NC_004631.1_genes.csv',
 						type: 'csv',
 						chromosomeField: 'Accession',
 						genomicFields: ['Gene start', 'Gene end']
@@ -113,7 +113,7 @@ const mainComponent = {
 				},
 				{
 					data: {
-						url: 'https://raw.githubusercontent.com/ThHarbig/gosling-react/master/NC_004631.1_genes_full.csv',
+						url: 'https://s3.amazonaws.com/gosling-lang.org/data/IslandViewer/NC_004631.1_genes.csv',
 						type: 'csv',
 						chromosomeField: 'Accession',
 						genomicFields: ['Gene start', 'Gene end']
@@ -133,7 +133,7 @@ const mainComponent = {
 				},
 				{
 					data: {
-						url: 'https://raw.githubusercontent.com/ThHarbig/gosling-react/master/NC_004631.1_genes_full.csv',
+						url: 'https://s3.amazonaws.com/gosling-lang.org/data/IslandViewer/NC_004631.1_genes.csv',
 						type: 'csv',
 						chromosomeField: 'Accession',
 						genomicFields: ['Gene start', 'Gene end']
@@ -159,7 +159,7 @@ const mainComponent = {
 				},
 				{
 					data: {
-						url: 'https://raw.githubusercontent.com/ThHarbig/gosling-react/master/NC_004631.1_genes_full.csv',
+						url: 'https://s3.amazonaws.com/gosling-lang.org/data/IslandViewer/NC_004631.1_genes.csv',
 						type: 'csv',
 						chromosomeField: 'Accession',
 						genomicFields: ['Gene start', 'Gene end']
@@ -225,7 +225,7 @@ const mainComponent = {
 				},
 				{
 					data: {
-						url: 'https://raw.githubusercontent.com/ThHarbig/gosling-react/master/NC_004631.1_annotations.csv',
+						url: 'https://s3.amazonaws.com/gosling-lang.org/data/IslandViewer/NC_004631.1_annotations.csv',
 						type: 'csv',
 						chromosomeField: 'Accession',
 						genomicFields: ['Gene start']
@@ -250,8 +250,8 @@ const mainComponent = {
 					color: {
 						field: 'Type',
 						type: 'nominal',
-						domain: ['Victors', 'BLAST','RGI','PAG'],
-						range: ['#460B80', '#A684EA','#FF9CC1','#FF9CC1']
+						domain: ['Victors', 'BLAST', 'RGI', 'PAG'],
+						range: ['#460B80', '#A684EA', '#FF9CC1', '#FF9CC1']
 					},
 					tooltip: [
 						{field: 'Type', type: 'nominal', alt: 'Name'},
@@ -266,19 +266,19 @@ const mainComponent = {
 
 function IslandViewer() {
 	const gosRef = useRef(null);
-	const [data, setData] =useState([]);
+	const [data, setData] = useState([]);
 
 	useEffect(() => {
 		if (!gosRef.current) return;
 		gosRef.current.api.subscribe('rawData', (type, rawdata) => {
-			const viewID=gosRef.current.api.getViewIds()[2]
-			const range =gosRef.current.hgApi.api.getLocation(viewID).xDomain
-			if(rawdata.data.length>0 && rawdata.id === viewID && 'Gene end' in rawdata.data[0]){
-				const dataInRange=rawdata.data.filter(entry => entry['Gene start'] > range[0]
-					&& entry['Gene start'] < range[1]
-					&& entry['Gene end'] > range[0]
-					&& entry['Gene end'] < range[1])
-				const uniqueInRange=dataInRange.filter((v,i,a)=>a.findIndex(v2=>(v2['Gene name']===v['Gene name']))===i)
+			const viewID = gosRef.current.api.getViewIds()[2]
+			const range = gosRef.current.hgApi.api.getLocation(viewID).xDomain
+			if (rawdata.data.length > 0 && rawdata.id === viewID && 'Gene end' in rawdata.data[0]) {
+				const dataInRange = rawdata.data.filter(entry => entry['Gene start'] > range[0]
+                    && entry['Gene start'] < range[1]
+                    && entry['Gene end'] > range[0]
+                    && entry['Gene end'] < range[1])
+				const uniqueInRange = dataInRange.filter((v, i, a) => a.findIndex(v2 => (v2['Gene name'] === v['Gene name'])) === i)
 				setData(uniqueInRange)
 			}
 		});
@@ -286,25 +286,43 @@ function IslandViewer() {
 			gosRef.current.api.unsubscribe('rawData');
 		}
 	}, [gosRef]);
-	const tableKeys=['Prediction Method','Gene name', 'Accnum','Product'];
+	const tableKeys = ['Prediction Method', 'Gene name', 'Accnum', 'Product'];
 	return (
 		<>
-			<div style={{width:'50%', display: 'inline-block'}}>
+			<div style={{width: '50%', display: 'inline-block'}}>
 				<GoslingComponent
 					ref={gosRef}
 					spec={mainComponent}
 				/>
 			</div>
-			{data.length === 0 ? null : (<div  style={{width:'50%', height:screen.height/2, overflowY:'scroll', display: 'inline-block'}}>
-				<table className='table-fixed border-collapse border border-slate-400'>
-					<thead className='capitalize'>
-					    <tr className='border border-slate-300  bg-slate-100'>{tableKeys.map(d => <th className='px-1' key={d}>{d}</th>)}</tr>
-					</thead>
-					<tbody>
-						{data.map(d => <tr className='border border-slate-300' key={d['Gene name']}>{tableKeys.map(key => <td className='px-1' key={d[key]}>{d[key]}</td>)}</tr>)}
-					</tbody>
-				</table>
-			</div>)}
+			{data.length === 0 ? null : (
+				<div style={{width: '50%', height: screen.height / 2, overflowY: 'scroll', display: 'inline-block'}}>
+					<table className='table-fixed border-collapse border border-slate-400'>
+						<thead className='capitalize'>
+							<tr className='border border-slate-300  bg-slate-100'>{tableKeys.map(d => <th className='px-1'
+								key={d}>{d}</th>)}</tr>
+						</thead>
+						<tbody>
+							{data.map(d => <tr className='border border-slate-300' key={d['Gene name']}>
+								{tableKeys.map(key => {
+									if (key === 'Prediction Method') {
+										if (d['Islands'].length > 0) {
+											if (d['Annotations'].length > 0) {
+												return (d['Islands'] + '/' + d['Annotations'])
+											}
+											return d['Islands']
+										}
+										if (d['Annotations'].length > 0) {
+											return d['Annotations']
+										}
+									}
+									return (<td className='px-1' key={d[key]}>{d[key]}</td>)
+								}
+								)}
+							</tr>)}
+						</tbody>
+					</table>
+				</div>)}
 		</>
 	);
 }
