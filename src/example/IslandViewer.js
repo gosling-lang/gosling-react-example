@@ -17,20 +17,14 @@ const centerRadius = 0.5;
 
 const linearHeight = 120
 const linearSize = linearHeight / 6
-const mainComponent = {
-	title: 'IslandViewer',
+const spec = {
+	title: 'IslandViewer 4 (Bertelli, C. et al. 2017)',
 	subtitle: 'Salmonella enterica subsp. enterica serovar Typhi Ty2, complete genome.',
 	assembly: [['NC_004631.1', 4791961]],
 	spacing: 50,
 	views: [
 		{
 			layout: 'circular',
-			data: {
-				type: 'csv',
-				url: 'https://s3.amazonaws.com/gosling-lang.org/data/IslandViewer/NC_004631.1_islands.csv',
-				chromosomeField: 'Accession',
-				genomicFields: ['Island start', 'Island end']
-			},
 			static: true,
 			alignment: 'overlay',
 			tracks: [
@@ -39,7 +33,7 @@ const mainComponent = {
 						url: 'https://s3.amazonaws.com/gosling-lang.org/data/IslandViewer/NC_004631.1_annotations.csv',
 						type: 'csv',
 						chromosomeField: 'Accession',
-						genomicFields: ['Gene start']
+						genomicFields: ['Gene start', 'Gene end']
 					},
 					dataTransform: [
 						{
@@ -48,7 +42,7 @@ const mainComponent = {
 							boundingBox: {
 								padding: 3.5,
 								startField: 'Gene start',
-								endField: 'Gene start'
+								endField: 'Gene end'
 							},
 							newField: 'row'
 						}
@@ -56,6 +50,7 @@ const mainComponent = {
 					row: {field: 'row', type: 'nominal'},
 					mark: 'point',
 					x: {field: 'Gene start', type: 'genomic'},
+					xe: {field: 'Gene end', type: 'genomic'},
 					size: {value: 3},
 					color: {
 						field: 'Type',
@@ -228,7 +223,7 @@ const mainComponent = {
 						url: 'https://s3.amazonaws.com/gosling-lang.org/data/IslandViewer/NC_004631.1_annotations.csv',
 						type: 'csv',
 						chromosomeField: 'Accession',
-						genomicFields: ['Gene start']
+						genomicFields: ['Gene start', 'Gene end']
 					},
 					dataTransform: [
 						{type: 'filter', field: 'External Annotations', oneOf: [''], not: true},
@@ -238,7 +233,7 @@ const mainComponent = {
 							boundingBox: {
 								padding: 3.5,
 								startField: 'Gene start',
-								endField: 'Gene start'
+								endField: 'Gene end'
 							},
 							newField: 'row'
 						}
@@ -246,6 +241,7 @@ const mainComponent = {
 					row: {field: 'row', type: 'nominal'},
 					mark: 'point',
 					x: {field: 'Gene start', type: 'genomic'},
+					xe: {field: 'Gene end', type: 'genomic'},
 					size: {value: 3},
 					color: {
 						field: 'Type',
@@ -261,7 +257,6 @@ const mainComponent = {
 			height: linearHeight,
 		}
 	],
-	experimental: {reactive: true}
 }
 
 function IslandViewer() {
@@ -273,7 +268,7 @@ function IslandViewer() {
 		gosRef.current.api.subscribe('rawData', (type, rawdata) => {
 			const viewID = gosRef.current.api.getViewIds()[2]
 			const range = gosRef.current.hgApi.api.getLocation(viewID).xDomain
-			if (rawdata.data.length > 0 && rawdata.id === viewID && 'Gene end' in rawdata.data[0]) {
+			if (rawdata.data.length > 0 && rawdata.id === viewID && 'Accnum' in rawdata.data[0]) {
 				const dataInRange = rawdata.data.filter(entry => entry['Gene start'] > range[0]
                     && entry['Gene start'] < range[1]
                     && entry['Gene end'] > range[0]
@@ -289,14 +284,20 @@ function IslandViewer() {
 	const tableKeys = ['Prediction Method', 'Gene name', 'Accnum', 'Product'];
 	return (
 		<>
-			<div style={{width: '50%', display: 'inline-block'}}>
+			<div style={{display: 'inline-block', width: '50%'}}>
 				<GoslingComponent
 					ref={gosRef}
-					spec={mainComponent}
+					spec={spec}
+					experimental={{reactive: true}}
 				/>
 			</div>
 			{data.length === 0 ? null : (
-				<div style={{width: '50%', height: screen.height / 2, overflowY: 'scroll', display: 'inline-block'}}>
+				<div style={{
+					height: linearHeight + 2 * circularRadius,
+					overflowY: 'scroll',
+					display: 'inline-block',
+					width: '50%',
+				}}>
 					<table className='table-fixed border-collapse border border-slate-400'>
 						<thead className='capitalize'>
 							<tr className='border border-slate-300  bg-slate-100'>{tableKeys.map(d => <th className='px-1'
@@ -305,18 +306,21 @@ function IslandViewer() {
 						<tbody>
 							{data.map(d => <tr className='border border-slate-300' key={d['Gene name']}>
 								{tableKeys.map(key => {
+									let value = '';
 									if (key === 'Prediction Method') {
 										if (d['Islands'].length > 0) {
 											if (d['Annotations'].length > 0) {
-												return (d['Islands'] + '/' + d['Annotations'])
+												value = d['Islands'] + '/' + d['Annotations']
+											} else {
+												value = d['Islands']
 											}
-											return d['Islands']
+										} else if (d['Annotations'].length > 0) {
+											value = d['Annotations']
 										}
-										if (d['Annotations'].length > 0) {
-											return d['Annotations']
-										}
+									} else {
+										value = d[key]
 									}
-									return (<td className='px-1' key={d[key]}>{d[key]}</td>)
+									return (<td className='px-1' key={key}>{value}</td>)
 								}
 								)}
 							</tr>)}
