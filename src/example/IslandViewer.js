@@ -13,8 +13,7 @@ const islandData = {
 	xe: {field: 'Island end', type: 'genomic'},
 }
 const circularRadius = 200;
-const centerRadius = 0.3;
-const trackHeight =  circularRadius * (1 - centerRadius) / 5
+const centerRadius = 0.5;
 
 const linearHeight = 120
 const linearSize = linearHeight / 6
@@ -42,13 +41,12 @@ const mainComponent = {
 						chromosomeField: 'Accession',
 						genomicFields: ['Gene start']
 					},
-
 					dataTransform: [
 						{
 							type: 'displace',
 							method: 'pile',
 							boundingBox: {
-								padding: 3,
+								padding: 3.5,
 								startField: 'Gene start',
 								endField: 'Gene start'
 							},
@@ -68,55 +66,16 @@ const mainComponent = {
 				},
 				{
 					...islandData,
-					dataTransform: [
-						{
-							type: 'filter', field: 'Method', oneOf: ['Predicted by at least one method']
-						},
-					],
-					y: {value: 0},
-					size: {value: 0},
-					color: {value: '#B22222'},
-					mark: 'rect'
-				},
-				{
-					dataTransform: [
-						{type: 'filter', field: 'Method', oneOf: ['IslandPath-DIMOB']},
-					],
-					...islandData,
-					y: {value: 3.5 * trackHeight},
-					size: {value: trackHeight},
-					color: {value: '#4169E1'},
-					mark: 'rect',
-
-				},
-				{
-					...islandData,
-					y: {value: 3.5 * 2 * trackHeight},
-					size: {value: trackHeight},
-					dataTransform: [
-						{type: 'filter', field: 'Method', oneOf: ['SIGI-HMM']},
-					],
-					color: {value: '#FF8C00'},
-					mark: 'rect'
-				},
-				{
-					...islandData,
-					y: {value: 3.5 * 3 * trackHeight},
-					size: {value: trackHeight},
-					dataTransform: [
-						{type: 'filter', field: 'Method', oneOf: ['IslandPick']},
-					],
-					color: {value: '#008001'},
-					mark: 'rect'
-				},
-				{
-					...islandData,
-					y: {value: 3.5 * 4 * trackHeight},
-					size: {value: trackHeight},
-					dataTransform: [
-						{type: 'filter', field: 'Method', oneOf: ['Islander']},
-					],
-					color: {value: '#40E0D0'},
+					row: {
+						field: 'Method',
+						type: 'nominal'
+					},
+					color: {
+						field: 'Method',
+						type: 'nominal',
+						domain: ['Predicted by at least one method','IslandPath-DIMOB','SIGI-HMM','IslandPick','Islander'],
+						range: ['#B22222','#4169E1','#FF8C00','#008001','#40E0D0'],
+					},
 					mark: 'rect'
 				},
 				{
@@ -148,6 +107,9 @@ const mainComponent = {
 						{type: 'filter', field: 'Strand', oneOf: ['1']},
 					],
 					color: {value: '#E9967A'},
+					tooltip: [
+						{field: 'Gene name', type: 'nominal', alt: 'Name'},
+					]
 				},
 				{
 					data: {
@@ -165,6 +127,61 @@ const mainComponent = {
 						{type: 'filter', field: 'Strand', oneOf: ['-1']},
 					],
 					color: {value: '#87976E'},
+					tooltip: [
+						{field: 'Gene name', type: 'nominal', alt: 'Name'},
+					]
+				},
+				{
+					data: {
+						url: 'https://raw.githubusercontent.com/ThHarbig/gosling-react/master/NC_004631.1_genes_full.csv',
+						type: 'csv',
+						chromosomeField: 'Accession',
+						genomicFields: ['Gene start', 'Gene end']
+					},
+					x: {field: 'Gene start', type: 'genomic'},
+					xe: {field: 'Gene end', type: 'genomic'},
+					y: {value: 5.5 * linearSize},
+					mark: 'text',
+					text: {field: 'Gene name', type: 'nominal'},
+					dataTransform: [
+						{type: 'filter', field: 'Strand', oneOf: ['1']},
+					],
+					color: {value: '#ffffff'},
+					visibility: [
+						{
+							operation: 'less-than',
+							measure: 'width',
+							threshold: '|xe-x|',
+							transitionPadding: 10,
+							target: 'mark'
+						}
+					]
+				},
+				{
+					data: {
+						url: 'https://raw.githubusercontent.com/ThHarbig/gosling-react/master/NC_004631.1_genes_full.csv',
+						type: 'csv',
+						chromosomeField: 'Accession',
+						genomicFields: ['Gene start', 'Gene end']
+					},
+					x: {field: 'Gene start', type: 'genomic'},
+					xe: {field: 'Gene end', type: 'genomic'},
+					y: {value: 4.5 * linearSize},
+					mark: 'text',
+					text: {field: 'Gene name', type: 'nominal'},
+					dataTransform: [
+						{type: 'filter', field: 'Strand', oneOf: ['-1']},
+					],
+					color: {value: '#ffffff'},
+					visibility: [
+						{
+							operation: 'less-than',
+							measure: 'width',
+							threshold: '|xe-x|',
+							transitionPadding: 10,
+							target: 'mark'
+						}
+					]
 				},
 				{
 					...islandData,
@@ -219,7 +236,7 @@ const mainComponent = {
 							type: 'displace',
 							method: 'pile',
 							boundingBox: {
-								padding: 3,
+								padding: 3.5,
 								startField: 'Gene start',
 								endField: 'Gene start'
 							},
@@ -236,6 +253,9 @@ const mainComponent = {
 						domain: ['Victors', 'BLAST','RGI','PAG'],
 						range: ['#460B80', '#A684EA','#FF9CC1','#FF9CC1']
 					},
+					tooltip: [
+						{field: 'Type', type: 'nominal', alt: 'Name'},
+					]
 				}],
 			width: 400,
 			height: linearHeight,
@@ -250,11 +270,16 @@ function IslandViewer() {
 
 	useEffect(() => {
 		if (!gosRef.current) return;
-		gosRef.current.api.subscribe('rawData', (type, data) => {
+		gosRef.current.api.subscribe('rawData', (type, rawdata) => {
 			const viewID=gosRef.current.api.getViewIds()[2]
 			const range =gosRef.current.hgApi.api.getLocation(viewID).xDomain
-			if(data.data.length>0 && data.id === viewID && 'Gene end' in data.data[0]){
-				setData(data.data.filter(entry => entry['Gene start'] > range[0] && entry['Gene start']< range[1] && entry['Gene end']> range[0] && entry['Gene end']< range[1]))
+			if(rawdata.data.length>0 && rawdata.id === viewID && 'Gene end' in rawdata.data[0]){
+				const dataInRange=rawdata.data.filter(entry => entry['Gene start'] > range[0]
+					&& entry['Gene start'] < range[1]
+					&& entry['Gene end'] > range[0]
+					&& entry['Gene end'] < range[1])
+				const uniqueInRange=dataInRange.filter((v,i,a)=>a.findIndex(v2=>(v2['Gene name']===v['Gene name']))===i)
+				setData(uniqueInRange)
 			}
 		});
 		return () => {
@@ -276,7 +301,7 @@ function IslandViewer() {
 					    <tr className='border border-slate-300  bg-slate-100'>{tableKeys.map(d => <th className='px-1' key={d}>{d}</th>)}</tr>
 					</thead>
 					<tbody>
-						{data.map(d => <tr className='border border-slate-300' key={JSON.stringify(d)}>{tableKeys.map(key => <td className='px-1' key={d[key]}>{d[key]}</td>)}</tr>)}
+						{data.map(d => <tr className='border border-slate-300' key={d['Gene name']}>{tableKeys.map(key => <td className='px-1' key={d[key]}>{d[key]}</td>)}</tr>)}
 					</tbody>
 				</table>
 			</div>)}
