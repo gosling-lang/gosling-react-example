@@ -19,7 +19,7 @@ const linearHeight = 120
 const linearSize = linearHeight / 6
 
 const spec = {
-	title: 'IslandViewer 4 (Bertelli, C. et al. 2017)',
+	title: 'IslandViewer 4 (Bertelli et al. 2017)',
 	subtitle: 'Salmonella enterica subsp. enterica serovar Typhi Ty2, complete genome.',
 	assembly: [['NC_004631.1', 4791961]],
 	spacing: 50,
