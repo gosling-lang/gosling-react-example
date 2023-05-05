@@ -12,6 +12,7 @@ const islandData = {
 	x: {field: 'Island start', type: 'genomic'},
 	xe: {field: 'Island end', type: 'genomic'},
 }
+const detailID = 'detailedView'
 const circularRadius = 200;
 const centerRadius = 0.5;
 
@@ -108,6 +109,7 @@ const spec = {
 						chromosomeField: 'Accession',
 						genomicFields: ['Gene start', 'Gene end']
 					},
+					id: detailID,
 					x: { field: 'Gene start', type: 'genomic' },
 					xe: { field: 'Gene end', type: 'genomic' },
 					y: { value: 5.5 * linearSize },
@@ -259,9 +261,8 @@ function IslandViewer() {
 	useEffect(() => {
 		if (!gosRef.current) return;
 		gosRef.current.api.subscribe('rawData', (type, rawdata) => {
-			const viewID = gosRef.current.api.getViewIds()[2]
-			const range = gosRef.current.hgApi.api.getLocation(viewID).xDomain
-			if (rawdata.data.length > 0 && rawdata.id === viewID && 'Accnum' in rawdata.data[0]) {
+			const range = gosRef.current.hgApi.api.getLocation(detailID).xDomain
+			if (rawdata.data.length > 0 && rawdata.id === detailID && 'Accnum' in rawdata.data[0]) {
 				const dataInRange = rawdata.data.filter(entry => (entry['Gene start'] > range[0]
                     && entry['Gene start'] < range[1])
                     || (entry['Gene end'] > range[0]
