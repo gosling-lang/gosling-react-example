@@ -262,10 +262,10 @@ function IslandViewer() {
 			const viewID = gosRef.current.api.getViewIds()[2]
 			const range = gosRef.current.hgApi.api.getLocation(viewID).xDomain
 			if (rawdata.data.length > 0 && rawdata.id === viewID && 'Accnum' in rawdata.data[0]) {
-				const dataInRange = rawdata.data.filter(entry => entry['Gene start'] > range[0]
-                    && entry['Gene start'] < range[1]
-                    && entry['Gene end'] > range[0]
-                    && entry['Gene end'] < range[1])
+				const dataInRange = rawdata.data.filter(entry => (entry['Gene start'] > range[0]
+                    && entry['Gene start'] < range[1])
+                    || (entry['Gene end'] > range[0]
+                    && entry['Gene end'] < range[1]))
 				const uniqueInRange = dataInRange.filter((v, i, a) => a.findIndex(v2 => (v2['Gene name'] === v['Gene name'])) === i)
 				setData(uniqueInRange)
 			}
