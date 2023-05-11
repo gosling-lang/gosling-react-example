@@ -1,8 +1,8 @@
 {
-  "name": "gosling-react-vite-example",
+  "name": "gosling-react-example",
   "version": "0.1.0",
   "license": "MIT",
-  "homepage": "https://gosling-lang.github.io/gosling-react-vite-example/",
+  "homepage": "https://gosling-lang.github.io/gosling-react-example/",
   "scripts": {
     "start": "vite",
     "build": "vite build",
