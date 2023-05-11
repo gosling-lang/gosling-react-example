@@ -70,12 +70,6 @@ function App() {
 }
 ```
 
-Run the demo in your browser:
-
-```sh
-rpm run start
-```
-
 ## Gosling API
 
 To use the Gosling API, you need to create a [Ref](https://reactjs.org/docs/refs-and-the-dom.html) that stores a reference to the GoslingComponent.
