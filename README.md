@@ -1,40 +1,35 @@
-# Gosling React Template
+# Gosling React Vite Example
 
-This repository describes a way to embed [Gosling.js](https://github.com/gosling-lang/gosling.js) visualization in your webpage using [React](https://reactjs.org) and also use Gosling API functions, such as looking up clicked genomic region and raw data or zooming to a certain gene using a text input. To make the process simple, this repository is based on [Create React App](https://reactjs.org/docs/create-a-new-react-app.html#create-react-app), but you can use React without Create React App as well.
+This repository describes a way to use [Gosling.js](https://github.com/gosling-lang/gosling.js) along with [React](https://reactjs.org) and [Vite](https://vitejs.dev/).
+ 
+The repository includes examples related to adding Gosling visualization to webpages and using Gosling JavaScript API functions (e.g., looking up clicked genomic region and its raw data, zooming to a certain gene of interest using a text input).
 
 All examples can be found as separate files under a [src/example](/src/example/) folder.
 
-Checkout the online demo of this repository at https://gosling-lang.github.io/gosling-react-template/.
+You can find the online demo at https://gosling-lang.github.io/gosling-react-template/.
 
-To start, you can either fork this template repository or follow the instructions described below.
+## Using This Repository
 
-## Using Create React App
-
-Install a react application using [Create React App](https://reactjs.org/docs/create-a-new-react-app.html#create-react-app).
-
-```
-npx create-react-app my-app
-cd my-app
-```
-
-Install `gosling.js` and its dependent libraries:
+Fork this repository, and then clone it.
 
 ```sh
-npm add gosling.js higlass pixi.js
+git clone https://github.com/[YOUR GITHUB ID]/gosling-react-template.git
+cd gosling-react-template
 ```
 
-> **Note** The compatible versions of React (`react`) and ReactDOM (`react-dom`) are behind their current versions. If their versions in your `package.json` file are higher than `16.13.1`, you need to lower the versions:
-> ```sh
-> npm add react@16.13.1 react-dom@16.13.1 react-scripts@4.0.2
-> ```
-> If you were using 18.0.0 or higher versions, you will need to edit your codes reflecting the major version change of React. For example, see https://stackoverflow.com/questions/46566830/how-to-use-create-react-app-with-an-older-react-version.
+Install all dependencies:
 
-Add the following stylesheet to `public/index.html`:
-```html
-<head>
-  <link rel="stylesheet" href="https://unpkg.com/higlass@1.11.3/dist/hglib.css">
-</head>
+```sh
+yarn install
 ```
+
+Run the demo in your browser:
+
+```sh
+yarn start
+```
+
+## Using Gosling Component
 
 Use the Gosling.js's react component to visualize your data:
 
@@ -136,40 +131,28 @@ function app(){
 
 Please refer to [Gosling documentation](http://gosling-lang.org/docs/js-api) for a complete list of Gosling API.
 
-## Using This Repository
+## Using Create React App
 
-Fork this repository, and then clone it.
+Install a react application using [Create React App](https://reactjs.org/docs/create-a-new-react-app.html#create-react-app).
 
-```sh
-git clone https://github.com/[YOUR GITHUB ID]/gosling-react-template.git
-cd gosling-react-template
+```
+npx create-react-app my-app
+cd my-app
 ```
 
-Install all dependencies:
+Install `gosling.js` and its dependent libraries:
 
 ```sh
-npm install
+npm add gosling.js higlass pixi.js
 ```
 
-Run the demo in your browser:
-
-```sh
-npm run start
+Add the following stylesheet to `public/index.html`:
+```html
+<head>
+  <link rel="stylesheet" href="https://unpkg.com/higlass@[1.12]/dist/hglib.css">
+</head>
 ```
 
 ## Resource
 
 - Gosling Editor ([demo](https://gosling.js.org/), [code](https://github.com/gosling-lang/gosling.js)) is also based on `<GoslingComponent/>`
-
-## Troubleshooting
-
-```
-npm ERR! code ERESOLVE
-npm ERR! ERESOLVE unable to resolve dependency tree
-```
-
-If you confront this error message when trying to install dependencies, add a `--force` tag:
-
-```
-npm add gosling.js higlass pixi.js --force
-```
