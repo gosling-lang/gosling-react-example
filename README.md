@@ -6,15 +6,15 @@ The repository includes examples related to adding Gosling visualization to webp
 
 All examples can be found as separate files under a [src/example](/src/example/) folder.
 
-You can find the online demo at https://gosling-lang.github.io/gosling-react-template/.
+You can find the online demo at https://gosling-lang.github.io/gosling-react-vite-example/.
 
 ## Using This Repository
 
 Fork this repository, and then clone it.
 
 ```sh
-git clone https://github.com/[YOUR GITHUB ID]/gosling-react-template.git
-cd gosling-react-template
+git clone https://github.com/[YOUR GITHUB ID]/gosling-react-vite-example.git
+cd gosling-react-vite-example
 ```
 
 Install all dependencies:
