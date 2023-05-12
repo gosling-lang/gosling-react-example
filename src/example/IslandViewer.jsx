@@ -333,7 +333,8 @@ function IslandViewer() {
 							</tr>)}
 						</tbody>
 					</table>
-				</div>)}' '</>
+				</div>)}
+		</>
 	);
 }
 
