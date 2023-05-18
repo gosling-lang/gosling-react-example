@@ -32,12 +32,26 @@ const spec = {
 			spacing: 0.1,
 			tracks: [
 				{
-					style: { outlineWidth: 1, outline: 'black' },
+					data: {
+						url: 'https://s3.amazonaws.com/gosling-lang.org/data/IslandViewer/NC_004631.1_GCcontent.csv',
+						type: 'csv',
+						separator: '\t',
+						genomicFields: ['Position']
+					},
+					y: {field: 'GCcontent', type: 'quantitative', range: [-250, 0], axis: 'none'},
+					mark: 'line',
+					size: {value: 0.5},
+					x: {field: 'Position', type: 'genomic'},
+					color: {
+						value: 'black'
+					}
+				},
+				{
+					style: {outlineWidth: 1, outline: 'black'},
 					data: {
 						url: 'https://s3.amazonaws.com/gosling-lang.org/data/IslandViewer/NC_004631.1_annotations.csv',
 						type: 'csv',
-						chromosomeField: 'Accession',
-						genomicFields: ['Gene start', 'Gene end']
+						genomicFields: ['Gene start']
 					},
 					dataTransform: [
 						{
@@ -46,16 +60,15 @@ const spec = {
 							boundingBox: {
 								padding: 3.5,
 								startField: 'Gene start',
-								endField: 'Gene end'
+								endField: 'Gene start'
 							},
 							newField: 'row'
 						}
 					],
-					row: { field: 'row', type: 'nominal' },
+					y: {field: 'row', type: 'nominal', flip: true},
 					mark: 'point',
-					x: { field: 'Gene start', type: 'genomic' },
-					xe: { field: 'Gene end', type: 'genomic' },
-					size: { value: 3 },
+					x: {field: 'Gene start', type: 'genomic'},
+					size: {value: 3},
 					color: {
 						field: 'Type',
 						type: 'nominal',
@@ -92,7 +105,7 @@ const spec = {
 				},
 				{
 					mark: 'brush',
-					x: { linkingId: 'detail' }
+					x: {linkingId: 'detail'}
 				}
 			],
 			width: circularRadius * 2,
@@ -100,7 +113,7 @@ const spec = {
 		},
 		{
 			layout: 'linear',
-			xDomain: { chromosome: 'NC_004631.1', interval: [1000000, 1500000] },
+			xDomain: {chromosome: 'NC_004631.1', interval: [1000000, 1500000]},
 			linkingId: 'detail',
 			alignment: 'overlay',
 			tracks: [
@@ -112,14 +125,14 @@ const spec = {
 						genomicFields: ['Gene start', 'Gene end']
 					},
 					id: detailID,
-					x: { field: 'Gene start', type: 'genomic' },
-					xe: { field: 'Gene end', type: 'genomic' },
-					y: { value: 5.5 * linearSize },
-					size: { value: linearSize },
+					x: {field: 'Gene start', type: 'genomic'},
+					xe: {field: 'Gene end', type: 'genomic'},
+					y: {value: 5.5 * linearSize},
+					size: {value: linearSize},
 					mark: 'rect',
-					dataTransform: [{ type: 'filter', field: 'Strand', oneOf: ['1'] }],
-					color: { value: '#E9967A' },
-					tooltip: [{ field: 'Gene name', type: 'nominal', alt: 'Name' }]
+					dataTransform: [{type: 'filter', field: 'Strand', oneOf: ['1']}],
+					color: {value: '#E9967A'},
+					tooltip: [{field: 'Gene name', type: 'nominal', alt: 'Name'}]
 				},
 				{
 					data: {
@@ -128,14 +141,14 @@ const spec = {
 						chromosomeField: 'Accession',
 						genomicFields: ['Gene start', 'Gene end']
 					},
-					x: { field: 'Gene start', type: 'genomic' },
-					xe: { field: 'Gene end', type: 'genomic' },
-					y: { value: 4.5 * linearSize },
-					size: { value: linearSize },
+					x: {field: 'Gene start', type: 'genomic'},
+					xe: {field: 'Gene end', type: 'genomic'},
+					y: {value: 4.5 * linearSize},
+					size: {value: linearSize},
 					mark: 'rect',
-					dataTransform: [{ type: 'filter', field: 'Strand', oneOf: ['-1'] }],
-					color: { value: '#87976E' },
-					tooltip: [{ field: 'Gene name', type: 'nominal', alt: 'Name' }]
+					dataTransform: [{type: 'filter', field: 'Strand', oneOf: ['-1']}],
+					color: {value: '#87976E'},
+					tooltip: [{field: 'Gene name', type: 'nominal', alt: 'Name'}]
 				},
 				{
 					data: {
@@ -144,13 +157,13 @@ const spec = {
 						chromosomeField: 'Accession',
 						genomicFields: ['Gene start', 'Gene end']
 					},
-					x: { field: 'Gene start', type: 'genomic' },
-					xe: { field: 'Gene end', type: 'genomic' },
-					y: { value: 5.5 * linearSize },
+					x: {field: 'Gene start', type: 'genomic'},
+					xe: {field: 'Gene end', type: 'genomic'},
+					y: {value: 5.5 * linearSize},
 					mark: 'text',
-					text: { field: 'Gene name', type: 'nominal' },
-					dataTransform: [{ type: 'filter', field: 'Strand', oneOf: ['1'] }],
-					color: { value: '#ffffff' },
+					text: {field: 'Gene name', type: 'nominal'},
+					dataTransform: [{type: 'filter', field: 'Strand', oneOf: ['1']}],
+					color: {value: '#ffffff'},
 					visibility: [
 						{
 							operation: 'less-than',
@@ -168,13 +181,13 @@ const spec = {
 						chromosomeField: 'Accession',
 						genomicFields: ['Gene start', 'Gene end']
 					},
-					x: { field: 'Gene start', type: 'genomic' },
-					xe: { field: 'Gene end', type: 'genomic' },
-					y: { value: 4.5 * linearSize },
+					x: {field: 'Gene start', type: 'genomic'},
+					xe: {field: 'Gene end', type: 'genomic'},
+					y: {value: 4.5 * linearSize},
 					mark: 'text',
-					text: { field: 'Gene name', type: 'nominal' },
-					dataTransform: [{ type: 'filter', field: 'Strand', oneOf: ['-1'] }],
-					color: { value: '#ffffff' },
+					text: {field: 'Gene name', type: 'nominal'},
+					dataTransform: [{type: 'filter', field: 'Strand', oneOf: ['-1']}],
+					color: {value: '#ffffff'},
 					visibility: [
 						{
 							operation: 'less-than',
@@ -188,41 +201,40 @@ const spec = {
 				{
 					...islandData,
 					mark: 'rect',
-					dataTransform: [{ type: 'filter', field: 'Method', oneOf: ['IslandPath-DIMOB'] }],
-					y: { value: 0.5 * linearSize },
-					size: { value: linearSize },
-					color: { value: '#4169E1' }
+					dataTransform: [{type: 'filter', field: 'Method', oneOf: ['IslandPath-DIMOB']}],
+					y: {value: 0.5 * linearSize},
+					size: {value: linearSize},
+					color: {value: '#4169E1'}
 				},
 				{
 					...islandData,
 					mark: 'rect',
-					dataTransform: [{ type: 'filter', field: 'Method', oneOf: ['SIGI-HMM'] }],
-					y: { value: 1.5 * linearSize },
-					size: { value: linearSize },
-					color: { value: '#FF8C00' }
+					dataTransform: [{type: 'filter', field: 'Method', oneOf: ['SIGI-HMM']}],
+					y: {value: 1.5 * linearSize},
+					size: {value: linearSize},
+					color: {value: '#FF8C00'}
 				},
 				{
 					...islandData,
 					mark: 'rect',
-					dataTransform: [{ type: 'filter', field: 'Method', oneOf: ['IslandPick'] }],
-					y: { value: 2.5 * linearSize },
-					size: { value: linearSize },
-					color: { value: '#008001' }
+					dataTransform: [{type: 'filter', field: 'Method', oneOf: ['IslandPick']}],
+					y: {value: 2.5 * linearSize},
+					size: {value: linearSize},
+					color: {value: '#008001'}
 				},
 				{
 					...islandData,
 					mark: 'rect',
-					dataTransform: [{ type: 'filter', field: 'Method', oneOf: ['Islander'] }],
-					y: { value: 3.5 * linearSize },
-					size: { value: linearSize },
-					color: { value: '#40E0D0' }
+					dataTransform: [{type: 'filter', field: 'Method', oneOf: ['Islander']}],
+					y: {value: 3.5 * linearSize},
+					size: {value: linearSize},
+					color: {value: '#40E0D0'}
 				},
 				{
 					data: {
 						url: 'https://s3.amazonaws.com/gosling-lang.org/data/IslandViewer/NC_004631.1_annotations.csv',
 						type: 'csv',
-						chromosomeField: 'Accession',
-						genomicFields: ['Gene start', 'Gene end']
+						genomicFields: ['Gene start']
 					},
 					dataTransform: [
 						{
@@ -231,23 +243,22 @@ const spec = {
 							boundingBox: {
 								padding: 3.5,
 								startField: 'Gene start',
-								endField: 'Gene end'
+								endField: 'Gene start'
 							},
 							newField: 'row'
 						}
 					],
-					row: { field: 'row', type: 'nominal' },
+					row: {field: 'row', type: 'nominal'},
 					mark: 'point',
-					x: { field: 'Gene start', type: 'genomic' },
-					xe: { field: 'Gene end', type: 'genomic' },
-					size: { value: 3 },
+					x: {field: 'Gene start', type: 'genomic'},
+					size: {value: 3},
 					color: {
 						field: 'Type',
 						type: 'nominal',
 						domain: ['Victors', 'BLAST', 'RGI', 'PAG'],
 						range: ['#460B80', '#A684EA', '#FF9CC1', '#FF9CC1']
 					},
-					tooltip: [{ field: 'Type', type: 'nominal', alt: 'Name' }]
+					tooltip: [{field: 'Type', type: 'nominal', alt: 'Name'}]
 				}
 			],
 			width: circularRadius * 2,
@@ -267,9 +278,9 @@ function IslandViewer() {
 			const range = localRef.hgApi.api.getLocation(detailID).xDomain
 			if (rawdata.data.length > 0 && rawdata.id === detailID && 'Accnum' in rawdata.data[0]) {
 				const dataInRange = rawdata.data.filter(entry => (entry['Gene start'] > range[0]
-                    && entry['Gene start'] < range[1])
+                        && entry['Gene start'] < range[1])
                     || (entry['Gene end'] > range[0]
-                    && entry['Gene end'] < range[1]))
+                        && entry['Gene end'] < range[1]))
 				const uniqueInRange = dataInRange.filter((v, i, a) => a.findIndex(v2 => (v2['Gene name'] === v['Gene name'])) === i)
 				setData(uniqueInRange)
 			}
@@ -280,9 +291,10 @@ function IslandViewer() {
 	}, []);
 	const tableKeys = ['Prediction Method', 'Gene name', 'Accnum', 'Product'];
 	return (
-		<>
-			<div style={{display: 'inline-block', width: '50%'}}>
+		<div style={{display: 'flex'}}>
+			<div style={{display: 'inline-block'}}>
 				<GoslingComponent
+					padding={0}
 					ref={gosRef}
 					spec={spec}
 					experimental={{reactive: true}}
@@ -290,10 +302,11 @@ function IslandViewer() {
 			</div>
 			{data.length === 0 ? null : (
 				<div style={{
-					height: linearHeight + 2 * circularRadius,
+					height: window.innerHeight,
 					overflowY: 'scroll',
 					display: 'inline-block',
-					width: '50%',
+					flexGrow: 1,
+					marginLeft: '10px'
 				}}>
 					<table className='table-fixed border-collapse border border-slate-400'>
 						<thead className='capitalize'>
@@ -324,7 +337,7 @@ function IslandViewer() {
 						</tbody>
 					</table>
 				</div>)}
-		</>
+		</div>
 	);
 }
 
