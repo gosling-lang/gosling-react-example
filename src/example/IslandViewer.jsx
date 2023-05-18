@@ -290,9 +290,10 @@ function IslandViewer() {
 	}, [gosRef]);
 	const tableKeys = ['Prediction Method', 'Gene name', 'Accnum', 'Product'];
 	return (
-		<>
-			<div style={{display: 'inline-block', width: '50%'}}>
+		<div style={{display: 'flex'}}>
+			<div style={{display: 'inline-block'}}>
 				<GoslingComponent
+					padding={0}
 					ref={gosRef}
 					spec={spec}
 					experimental={{reactive: true}}
@@ -300,10 +301,11 @@ function IslandViewer() {
 			</div>
 			{data.length === 0 ? null : (
 				<div style={{
-					height: linearHeight + 2 * circularRadius,
+					height: window.innerHeight,
 					overflowY: 'scroll',
 					display: 'inline-block',
-					width: '50%',
+					flexGrow: 1,
+					marginLeft: '10px'
 				}}>
 					<table className='table-fixed border-collapse border border-slate-400'>
 						<thead className='capitalize'>
@@ -334,7 +336,7 @@ function IslandViewer() {
 						</tbody>
 					</table>
 				</div>)}
-		</>
+		</div>
 	);
 }
 
