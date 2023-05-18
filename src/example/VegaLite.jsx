@@ -58,9 +58,10 @@ function VegaLiteExample() {
 
 	useEffect(() => {
 		if (!gosRef.current) return;
-		gosRef.current.api.subscribe('rangeSelect', (_, e) => setSelectedData(e.data));
-		return () => gosRef.current.api.unsubscribe('rangeSelect');
-	}, [gosRef]);
+		const localRef=gosRef.current
+		localRef.api.subscribe('rangeSelect', (_, e) => setSelectedData(e.data));
+		return () => localRef.api.unsubscribe('rangeSelect');
+	}, []);
 
 	return (
 		<>

@@ -6,7 +6,7 @@ import WidgetEncoding from './example/WidgetEncoding';
 import WidgetNavigation from './example/WidgetNavigation';
 import MouseEvents from './example/MouseEvents';
 import IslandViewer from './example/IslandViewer';
-import "higlass/dist/hglib.css";
+import 'higlass/dist/hglib.css';
 
 // The full list of examples
 const examples = {

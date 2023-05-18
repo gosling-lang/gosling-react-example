@@ -262,8 +262,9 @@ function IslandViewer() {
 
 	useEffect(() => {
 		if (!gosRef.current) return;
-		gosRef.current.api.subscribe('rawData', (type, rawdata) => {
-			const range = gosRef.current.hgApi.api.getLocation(detailID).xDomain
+		const localRef=gosRef.current
+		localRef.api.subscribe('rawData', (type, rawdata) => {
+			const range = localRef.hgApi.api.getLocation(detailID).xDomain
 			if (rawdata.data.length > 0 && rawdata.id === detailID && 'Accnum' in rawdata.data[0]) {
 				const dataInRange = rawdata.data.filter(entry => (entry['Gene start'] > range[0]
                     && entry['Gene start'] < range[1])
@@ -274,9 +275,9 @@ function IslandViewer() {
 			}
 		});
 		return () => {
-			gosRef.current.api.unsubscribe('rawData');
+			localRef.api.unsubscribe('rawData');
 		}
-	}, [gosRef]);
+	}, []);
 	const tableKeys = ['Prediction Method', 'Gene name', 'Accnum', 'Product'];
 	return (
 		<>
