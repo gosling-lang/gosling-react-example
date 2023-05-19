@@ -1,4 +1,4 @@
-import React, {useCallback, useMemo, useState} from 'react';
+import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import {GoslingComponent} from 'gosling.js';
 import {Vega} from 'react-vega'
 
@@ -7,14 +7,28 @@ const height = 300;
 
 function GeneSpy() {
 	// track order to link leaves of vega tree to tracks in gosling
-	const [trackOrder, setTrackOrder]=useState([])
-	const [maxDist,setMaxDist]=useState(1)
+	const [trackOrder, setTrackOrder]=useState([]);
+	const [maxDist,setMaxDist]=useState(1);
+	const [gosComponentHeight,setGosComponentHeight]=useState(height);
+	const gosRef=useRef(null);
+	const gosID='goslingVis';
 	const onNewView = useCallback(view=>{
 		let leaves=view.data('leaves').slice();
 		leaves.sort((a,b)=>a.x-b.x);
 		setTrackOrder(leaves.map(leaf=>leaf.id))
 		setMaxDist(Math.max(...leaves.map(d=>d.distance)))
 	},[])
+	useEffect(() => {
+		if (!gosRef.current) return;
+		gosRef.current.api.subscribe('rawData', () => {
+			const tracks= gosRef.current.api.getTracks();
+			setGosComponentHeight(tracks[tracks.map(d=>d.id).indexOf(gosID)].shape.height);
+		});
+		const localRef=gosRef.current
+		return () => {
+			localRef.api.unsubscribe('rawData');
+		}
+	}, []);
 	const goslingSpec=useMemo(()=>{
 		return({
 			title: 'GeneSpy + iTol',
@@ -39,6 +53,7 @@ function GeneSpy() {
 						domain: ['anchor', 'conserved', 'disrupted'],
 						range: ['red', 'gray', 'yellow']
 					},
+					id: gosID,
 					row: {field: 'Accession', type: 'nominal',domain: trackOrder},
 					tracks: [
 						{
@@ -47,8 +62,7 @@ function GeneSpy() {
 							],
 							mark: 'triangleRight',
 							style: {align: 'right'},
-							size: {field:'Gene length'},
-							x: {field: 'Gene start', type: 'genomic'},
+							x: {field: 'Gene start', type: 'genomic', axis: 'none'},
 							xe: {field: 'Gene end', type: 'genomic'}
 						},
 						{
@@ -70,7 +84,7 @@ function GeneSpy() {
 		return({$schema: 'https://vega.github.io/schema/vega/v5.json',
 			description: 'An example of Cartesian layouts for a node-link diagram of hierarchical data.',
 			width: width,
-			height: height,
+			height: gosComponentHeight,
 			padding: 0,
 			data: [
 				{
@@ -164,7 +178,7 @@ function GeneSpy() {
 				}
 			]
 		})
-	},[maxDist])
+	},[maxDist,gosComponentHeight])
 	return (
 		<>
 			<div style={{display: 'inline-block'}}>
@@ -172,6 +186,7 @@ function GeneSpy() {
 			</div>
 			<div style={{display: 'inline-block'}}>
 				<GoslingComponent
+					ref={gosRef}
 					padding={0}
 					spec={goslingSpec}
 					experimental={{reactive: true}}
