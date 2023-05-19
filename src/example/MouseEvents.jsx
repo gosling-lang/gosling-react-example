@@ -9,14 +9,15 @@ function MouseEvents() {
 
 	useEffect(() => {
 		if(!gosRef.current) return;
+		const localRef=gosRef.current
 
-		gosRef.current.api.subscribe('click', (_, eventData) => {
+		localRef.api.subscribe('click', (_, eventData) => {
 			const { genomicPosition: p } = eventData;
 			setPosition(`${p.chromosome}:${p.position}`)
 			setData(eventData.data);
 		});
 
-		gosRef.current.api.subscribe('rangeSelect', (_, eventData) => {
+		localRef.api.subscribe('rangeSelect', (_, eventData) => {
 			if(!eventData || !eventData.genomicRange) {
 				// range selection cleared
 				setPosition('N/A');
@@ -29,10 +30,10 @@ function MouseEvents() {
 		});
 
 		return () => {
-			gosRef.current.api.unsubscribe('click');
-			gosRef.current.api.unsubscribe('rangeSelect');
+			localRef.api.unsubscribe('click');
+			localRef.api.unsubscribe('rangeSelect');
 		}
-	}, [gosRef]);
+	}, []);
 
 	return (
 		<div>
