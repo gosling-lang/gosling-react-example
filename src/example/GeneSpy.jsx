@@ -48,8 +48,8 @@ function GeneSpy() {
 							mark: 'triangleRight',
 							style: {align: 'right'},
 							size: {field:'Gene length'},
-							x: {field: 'Gene end', type: 'genomic'},
-							xe: {field: 'Gene start', type: 'genomic'}
+							x: {field: 'Gene start', type: 'genomic'},
+							xe: {field: 'Gene end', type: 'genomic'}
 						},
 						{
 							dataTransform: [
