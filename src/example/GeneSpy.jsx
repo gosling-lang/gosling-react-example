@@ -45,29 +45,11 @@ function GeneSpy() {
 							dataTransform: [
 								{type: 'filter', field: 'Strand', oneOf: ['+']}
 							],
-							x: {field: 'Gene start', type: 'genomic'},
-							xe: {field: 'Gene end', type: 'genomic'},
-							mark: 'rect',
-							size: {value: 2}
-						},
-						{
-							dataTransform: [
-								{type: 'filter', field: 'Strand', oneOf: ['+']}
-							],
 							mark: 'triangleRight',
 							style: {align: 'right'},
 							size: {field:'Gene length'},
 							x: {field: 'Gene end', type: 'genomic'},
-						},
-						{
-							dataTransform: [
-								{type: 'filter', field: 'Strand', oneOf: ['-']}
-							],
-							x: {field: 'Gene start', type: 'genomic'},
-							xe: {field: 'Gene end', type: 'genomic'},
-							mark: 'rect',
-							size: {value: 2},
-							stroke: {value: 'gray'}
+							xe: {field: 'Gene start', type: 'genomic'}
 						},
 						{
 							dataTransform: [
@@ -76,6 +58,7 @@ function GeneSpy() {
 							mark: 'triangleLeft',
 							style: {align: 'left'},
 							x: {field: 'Gene start', type: 'genomic'},
+							xe: {field: 'Gene end', type: 'genomic'}
 						}
 					],
 					height: height
