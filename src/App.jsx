@@ -6,6 +6,7 @@ import WidgetEncoding from './example/WidgetEncoding';
 import WidgetNavigation from './example/WidgetNavigation';
 import MouseEvents from './example/MouseEvents';
 import IslandViewer from './example/IslandViewer';
+import GeneSpy from './example/GeneSpy';
 import 'higlass/dist/hglib.css';
 
 // The full list of examples
@@ -16,6 +17,7 @@ const examples = {
 	'Mouse Events': <MouseEvents/>,
 	'Vega-Lite': <VegaLiteExample/>,
 	IslandViewer: <IslandViewer/>,
+	GeneSpy: <GeneSpy/>
 
 }
 
