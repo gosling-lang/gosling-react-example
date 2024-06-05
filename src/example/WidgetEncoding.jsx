@@ -9,7 +9,6 @@ const goslingSpec = (mark, layout, binSize) => {
 		layout,
 		arrangement: 'vertical',
 		centerRadius: 0.4,
-		xDomain: { chromosome: '1' },
 		style: {
 			select: { color: 'black', stroke: 'black', strokeWidth: 6, arrange: 'behind', opacity: 0.1 }
 		},
