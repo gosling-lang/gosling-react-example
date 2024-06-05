@@ -4,6 +4,7 @@ import { GoslingComponent } from 'gosling.js';
 function SimpleExample() {
 	return (
 		<>
+			<h1 style={{ marginLeft: '60px', marginTop: '60px'}}>Zoom and pan in the track below using your mouse and mouse wheel.</h1>
 			<GoslingComponent
 				spec={{ 
 					tracks: [{
