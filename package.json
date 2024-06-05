@@ -12,9 +12,9 @@
     "deploy": "yarn build; touch build/.nojekyll; gh-pages -d build -t --git git"
   },
   "dependencies": {
-    "gosling.js": "^0.9.30",
-    "higlass": "^1.12.3",
-    "pixi.js": "6.0.4",
+    "gosling.js": "^0.17.0",
+    "higlass": "^1.13.4",
+    "pixi.js": "6.5.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
