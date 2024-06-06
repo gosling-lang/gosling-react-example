@@ -2,25 +2,38 @@ name: Deploy Examples
 
 on:
   push:
-    branches:
-        - master
+    branches: ["master"]
+  
+# Sets the GITHUB_TOKEN permissions to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
+    environment:
+      name: github-pages
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
       - run: yarn install
-      - name: Deploy
-        run: |
-          git config --global user.name "action@github.com"
-          git config --global user.email "GitHub Action"
-          git remote set-url origin https://${ACCESS_TOKEN}@github.com/${REPO}.git
-          yarn deploy
-        env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          REPO: ${{ github.repository }}
+      - run: yarn build
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          # Upload dist repository
+          path: "./build"
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
