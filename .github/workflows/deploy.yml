@@ -2,7 +2,7 @@ name: Deploy Examples
 
 on:
   push:
-    branches: ["master", "etowahadams/fix-deploy"]
+    branches: ["master"]
   
 # Sets the GITHUB_TOKEN permissions to allow deployment to GitHub Pages
 permissions:
