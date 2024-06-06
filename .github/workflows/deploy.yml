@@ -15,12 +15,14 @@ jobs:
         with:
           node-version: 16
       - run: yarn install
-      - name: Deploy
-        run: |
-          git config --global user.name "action@github.com"
-          git config --global user.email "GitHub Action"
-          git remote set-url origin https://${ACCESS_TOKEN}@github.com/${REPO}.git
-          yarn deploy
-        env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          REPO: ${{ github.repository }}
+      - run: yarn build
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          # Upload build directory
+          path: "./build"
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
