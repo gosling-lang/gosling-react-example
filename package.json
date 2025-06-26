@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "license": "MIT",
   "homepage": "https://gosling-lang.github.io/gosling-react-example/",
+  "packageManager": "pnpm@8.6.11",
   "scripts": {
     "start": "vite",
     "build": "vite build",

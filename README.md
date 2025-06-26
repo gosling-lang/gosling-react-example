@@ -20,13 +20,13 @@ cd gosling-react-example
 Install all dependencies:
 
 ```sh
-yarn install
+pnpm install
 ```
 
 Run the demo in your browser:
 
 ```sh
-yarn start
+pnpm start
 ```
 
 ## Using Gosling Component
